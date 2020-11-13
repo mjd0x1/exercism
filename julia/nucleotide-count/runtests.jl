@@ -15,5 +15,5 @@ end
 end
 
 @testset "strand with invalid nucleotides" begin
-    @test_throws DomainError count_nucleotides(u)
+    @test_throws DomainError count_nucleotides("AGXXACT")
 end

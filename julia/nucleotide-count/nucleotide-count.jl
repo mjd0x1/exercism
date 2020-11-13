@@ -6,19 +6,18 @@ The frequency of each nucleotide within `strand` as a dictionary.
 Invalid strands raise a `DomainError`.
 
 """
+
 function count_nucleotides(strand)
-    nucleotides =  ['A','C','G','T']
-    output = Dict()
+    
+    output = Dict('A' => 0 ,'C' => 0 ,'G' => 0,'T' => 0)
 
-    errors = [strand...] ∩ setdiff('A':'Z',nucleotides)
-
-    if length(errors) > 0 
-        throw(DomainError(string(errors), "require " * string(nucleotides))) 
+    for s in strand
+        if s in keys(output) 
+            output[s] = get(output,s,0) + 1
+        else
+            throw(DomainError(string(s), "require " * string(keys(output))))
+        end
     end
-  
-    for n ∈ nucleotides
-        output[n] = strand == "" ? 0  :  sum([strand...].==n)
-    end
-
     output
+    
 end
