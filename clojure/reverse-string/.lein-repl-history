@@ -1,0 +1,36 @@
+a = [1,2,3,4]
+(def a [1,2,3,4])
+a
+(let [x & xs] a)
+a
+(drop 4 a)
+(= (drop 4 a) '()) 
+(= (drop 4 a) ()) 
+(defn reverse-string [s] ;; <- arglist goes here
+  (loop [acc '() ls s]
+     (if (= ls ())
+       (apply str acc)
+       (recur (cons (last ls) acc) (drop-last ls))
+       )))
+(reverse-string "robot")
+(defn reverse-string [s] ;; <- arglist goes here
+  (loop [acc '() ls s]
+     (if (= ls ())
+       acc
+       (recur (cons (last ls) acc) (drop-last ls))
+       )))
+(reverse-string "robot")
+(defn reverse-string [s] ;; <- arglist goes here
+  (loop [acc '() ls s]
+     (if (= ls ())
+       acc
+       (recur (cons (first ls) acc) (drop 1 ls))
+       )))
+(reverse-string "robot")
+(defn reverse-string [s] ;; <- arglist goes here
+  (loop [acc () ls s]
+     (if (= ls ())
+       (apply str acc)
+       (recur (cons (first ls) acc) (drop 1 ls))
+       )))
+(reverse-string "robot")
