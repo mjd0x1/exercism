@@ -20,7 +20,7 @@ defmodule WordCountTest do
   #@tag :pending
   test "ignore punctuation" do
     expected = %{"car" => 1, "carpet" => 1, "as" => 1, "java" => 1, "javascript" => 1}
-    assert WordCount.count("car : carpet as java : javascript!!&*@$%^&") == expected
+    assert WordCount.count("car : carpet as java : javascript!!&*£@$%^&") == expected
   end
 
   #@tag :pending

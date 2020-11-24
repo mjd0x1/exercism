@@ -6,16 +6,8 @@ defmodule WordCount do
   """
   @spec count(String.t()) :: map
   def count(sentence) do
-    cleaned = String.to_charlist(sentence)
-        |> Enum.filter(&(&1 not in [?!,?&,?£,?@,?$,?%,?^,?*,?:,?,]))
-        |> List.to_string
-        |> String.replace("_"," ")
 
-
-    words = String.split(cleaned," ")
-            |>  (&Enum.map(&1,fn t -> String.downcase(t) end)).()
-            |> Enum.filter(&(&1!=""))
-
+    words =  Enum.map(String.split(sentence,~r/[^[:alnum:]-]/u, trim: true), fn x -> String.downcase(x) end)
     keys =  Enum.uniq(words)
 
     Enum.map(keys, fn t ->  {t,Enum.count(words,&(&1==t))} end)
