@@ -1,0 +1,4 @@
+(def s "assadadsadas?")
+(last s)
+(= '?' (last s))
+(=\? (last s))

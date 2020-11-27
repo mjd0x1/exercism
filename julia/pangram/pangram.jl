@@ -4,5 +4,5 @@
 Return `true` if `input` contains every alphabetic character (case insensitive).
 
 """
-ispangram(input)  =length(uppercase.(collect('a':'z'))  ∩  uppercase.(input)) == 26 
+ispangram(input)  = length(('A':'Z') ∩ uppercase(input)) == 26
 

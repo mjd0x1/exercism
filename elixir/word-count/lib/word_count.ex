@@ -7,11 +7,13 @@ defmodule WordCount do
   @spec count(String.t()) :: map
   def count(sentence) do
 
-    words =  Enum.map(String.split(sentence,~r/[^[:alnum:]-]/u, trim: true), fn x -> String.downcase(x) end)
-    keys =  Enum.uniq(words)
+    words =  String.split(String.downcase(sentence), ~r/[^[:alnum:]-]/u, trim: true)
 
-    Enum.map(keys, fn t ->  {t,Enum.count(words,&(&1==t))} end)
-          |> Map.new
+      #Enum.uniq(words)
+      #  |>  Enum.map(fn t -> {t,Enum.count(words,&(&1==t))} end)
+      #  |> Map.new
+
+    words  |> Enum.reduce(%{}, fn x, acc -> Map.update(acc,x,1,&(&1+1))  end)
 
   end
 end
