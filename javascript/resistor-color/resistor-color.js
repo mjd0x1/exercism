@@ -1,6 +1,6 @@
 "use strict";
 export const colorCode = (x) => {
-    return x == "Colors" ? COLORS  : COLORS.indexOf(x)
+    return COLORS.indexOf(x)
 };
 
 export const COLORS = ["black",
