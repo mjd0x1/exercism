@@ -1,0 +1,66 @@
+(def n 153) 
+n
+(str n)
+(seq (str n))
+(seq n)
+(seq (str n))
+(map #(Integer/parseInt %) (str n))
+(Integer/parseInt "3")
+(Integer/parseInt '3')
+(map #(Integer/parseInt (str %)) (str n))
+(int 'a')
+(code 'a')
+(str n)
+(map #(int %) (str n))
+(map #(- (int %) 48) (str n))
+(count str n)
+(count (str n))
+(range (count (str n)))
+(range 1 (count (str n)))
+(Math/pow 2 3)
+(defn armstrong? [num] 
+   (let [length (inc (count (str num)))]
+     (apply + (map #(Math/pow (- (int %) 48) length) (str num))))
+)
+(armstrong 123)
+(armstrong? 123)
+(armstrong? 153)
+(defn armstrong? [num] 
+   (let [length (inc (count (str num)))]
+     (map #(Math/pow (- (int %) 48) length) (str num))
+))
+(armstrong? 123)
+(armstrong? 153)
+(Math/pow 3 3)
+(Math/pow 3 4)
+(Math/pow 5 4)
+(defn armstrong? [num] 
+   (let [length (count (str num))]
+     (map #(Math/pow (- (int %) 48) length) (str num))
+))
+(armstrong? 153)
+(apply + (armstrong? 153))
+(defn armstrong? [num] 
+   (let [length (count (str num))]
+     (reduce #(+ %1 (Math/pow (- (int %2) 48) length)) (str num))
+))
+(armstrong? 153)
+(defn armstrong? [num] 
+   (let [length (count (str num))]
+     (reduce #(+ %1 (Math/pow (- (int %2) 48) length)) 0 (str num))
+))
+(armstrong? 153)
+(defn armstrong? [num] 
+   (let [s (str num)]
+     (= (reduce #(+ %1 (Math/pow (- (int %2) 48) (count s))) 0 s) num)
+))
+(armstrong? 153)
+(= 153.0 153)
+(= 153 153)
+(== 153.0 153)
+(armstrong? 153)
+(defn armstrong? [num] 
+   (let [s (str num)]
+     (== (reduce #(+ %1 (Math/pow (- (int %2) 48) (count s))) 0 s) num)
+))
+(armstrong? 153)
