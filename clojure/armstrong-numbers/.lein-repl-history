@@ -64,3 +64,221 @@ n
      (== (reduce #(+ %1 (Math/pow (- (int %2) 48) (count s))) 0 s) num)
 ))
 (armstrong? 153)
+(defn get-digits [n]
+    (let [k (Math/log10 n)
+          max-n (Math/pow 10 k)]
+      (take k (iterate (fn [[num output divisor]] [(mod num divisor),(conj output (quot num divisor)),(/ divisor 10)]) [n,[],max-n])))
+)
+(get-digits 2011)
+(Math/log10 2011)
+(defn get-digits [n]
+    (let [k (int (Math/log10 n))
+          max-n (Math/pow 10 k)]
+      (take k (iterate (fn [[num output divisor]] [(mod num divisor),(conj output (quot num divisor)),(/ divisor 10)]) [n,[],max-n])))
+)
+(get-digits 2011)
+(defn get-digits [n]
+    (let [k (int (Math/log10 n))
+          max-n (Math/pow 10 k)]
+      (take (+ k 2) (iterate (fn [[num output divisor]] [(mod num divisor),(conj output (quot num divisor)),(/ divisor 10)]) [n,[],max-n])))
+)
+(get-digits 2011)
+(last (get-digits 2011))
+(defn get-digits [n]
+    (let [k (int (Math/log10 n))
+          max-n (Math/pow 10 k)]
+      (take (+ k 2) (iterate (fn [[num divisor output]] [(mod num divisor),(/ divisor 10),(conj output (quot num divisor))]) [n,max-n,[]])))
+)
+(-> (get-digits 2011) last last)
+(defn get-digits [n]
+  
+    (let [k (int (Math/log10 n))
+          max-n (Math/pow 10 k)]
+      (-> (take (+ k 2) (iterate (fn [[num divisor output]] [(mod num divisor),(/ divisor 10),(conj output (quot num divisor))]) [n,max-n,[]]))
+          last
+      )
+    
+))
+(get-digits 234234)
+(get-digits 234234123213)
+(apply + (get-digits 234234123213))
+(get-digits 234234123213)
+(count (get-digits 234234123213))
+(get-digits (defn get-digits [n]
+  
+    (let [k (int (Math/log10 n))
+          max-n (Math/pow 10 k)]
+      (-> (take (+ k 2) (iterate (fn [[num divisor output]] [(mod num divisor),(/ divisor 10),(conj output (quot num divisor))]) [n,max-n,[]]))
+          last
+      )
+    
+))
+(get-digits 21897142587612075)
+(defn get-digits [n]
+  
+    (let [k (int (Math/log10 n))
+          max-n (Math/pow 10 k)]
+      (-> (take (+ k 2) (iterate (fn [[num divisor output]] [(mod num divisor),(/ divisor 10),(conj output (quot num divisor))]) [n,max-n,[]]))
+          last
+      )
+    
+))
+(get-digits 21897142587612075)
+      (-> (take (+ k 2) (iterate (fn [[num divisor output]] [(mod num divisor),(/ divisor 10),(conj output (quot num divisor))]) [n,max-n,[]]))
+(defn get-digits [n]
+  
+    (let [k (int (Math/log10 n))
+          max-n (Math/pow 10 k)]
+      (-> (take (+ k 1) (iterate (fn [[num divisor output]] [(mod num divisor),(/ divisor 10),(conj output (quot num divisor))]) [n,max-n,[]]))
+          last
+      )
+    
+))
+(get-digits 21897142587612075)
+(defn get-digits [n]
+  
+    (let [k (int (Math/log10 n))
+          max-n (Math/pow 10 k)]
+      (-> (take (+ k 2) (iterate (fn [[num divisor output]] [(mod num divisor),(/ divisor 10N),(conj output (quot num divisor))]) [n,max-n,[]]))
+          last
+      )
+    
+))
+(defn get-digits [n]
+  
+    (let [k (int (Math/log10 n))
+          max-n (Math/pow 10N k)]
+      (-> (take (+ k 2) (iterate (fn [[num divisor output]] [(mod num divisor),(/ divisor 10N),(conj output (quot num divisor))]) [n,max-n,[]]))
+          last
+      )
+    
+))
+(get-digits 21897142587612075)
+(defn get-digits [n]
+  
+    (let [k (int (Math/log10 n))
+          max-n (Math/pow 10 k)]
+      (-> (take (+ k 2) (iterate (fn [[num divisor output]] [(mod num divisor),(/ divisor 10),(conj output (quot num divisor))]) [n,max-n,[]]))
+          
+      )
+    
+))
+(get-digits 21897142587612075)
+(defn get-digits [n]
+  
+    (let [k (int (Math/log10 (bigint n)))
+          max-n (Math/pow 10 k)]
+      (-> (take (+ k 2) (iterate (fn [[num divisor output]] [(mod num divisor),(/ divisor 10),(conj output (quot num divisor))]) [n,max-n,[]]))
+          
+      )
+    
+))
+(get-digits 21897142587612075)
+(/ 21897142587612075 10)
+(mod 21897142587612075 10)
+(mod 21897142587612075 10000000000)
+(mod 21897142587612075 100000000000000)
+(mod 21897142587612075 100000000000000000)
+(mod 21897142587612075 10000000000000000000000)
+(defn get-digits [n]
+  
+    (let [k (int (Math/log10 (bigint n)))
+          max-n (Math/pow 10N k)]
+      (-> (take (+ k 2) (iterate (fn [[num divisor output]] [(mod num divisor),(/ divisor 10N),(conj output (quot num divisor))]) [n,max-n,[]]))
+          
+      )
+    
+))
+(get-digits 21897142587612075)
+(defn get-digits [n]
+  
+    (let [k (bigint (Math/log10 (bigint n)))
+          max-n (Math/pow 10N k)]
+      (-> (take (+ k 2) (iterate (fn [[num divisor output]] [(mod num divisor),(/ divisor 10N),(conj output (quot num divisor))]) [n,max-n,[]]))
+          
+      )
+    
+))
+(get-digits 21897142587612075)
+(bigint (Math/log10 (bigint 21897142587612075))
+(bigint (Math/log10 (bigint 21897142587612075)))
+(Math/pow 10N 16)
+(Math/pow 10N 16N)
+(BigInteger/pow 2 10)
+(.pow 2 10)
+(expt 2 3)
+(.pow (BigInteger. "2") 10)
+(.pow (BigInteger. "2124") 10)
+(.pow (BigInteger. 10) 10)
+(.pow (BigInteger. (str 10)) 10)
+(defn get-digits [n]
+  
+    (let [k (bigint (Math/log10 (bigint n)))
+          max-n (Math/pow 10N k)]
+      (-> (take (+ k 2) (iterate (fn [[num divisor output]] [(mod num divisor),(/ divisor 10N),(conj output (quot num divisor))]) [n,max-n,[]]))
+          last
+          
+      )
+    
+))
+(get-digits 21897142587612075)
+(.pow (BigInteger. 10) 10)
+(.pow (BigInteger. (str 10)) 10)
+(Math/pow 10 5)
+(Math/pow 10 9)
+(Math/pow 10 12)
+(Math/pow 2 23)
+(Math/pow 2 34)
+(take 5 (iterate #(* % 10) 10))
+(take 20 (iterate #(* % 10) 10))
+(defn get-digits [n]
+  
+    (let [k (Math/log10 n)
+          max-n (.pow (BigInteger. (str 10)) k)]
+      (-> (take (+ k 2) (iterate (fn [[num divisor output]] [(mod num divisor),(/ divisor 10),(conj output (quot num divisor))]) [n,max-n,[]]))
+          last
+      )
+    
+))
+(get-digits 21897142587612075)
+(defn get-digits [n]
+  
+    (let [k (int (Math/log10 n))
+          max-n (.pow (BigInteger. (str 10)) k)]
+      (-> (take (+ k 2) (iterate (fn [[num divisor output]] [(mod num divisor),(/ divisor 10),(conj output (quot num divisor))]) [n,max-n,[]]))
+          last
+      )
+    
+))
+(get-digits 21897142587612075)
+(defn get-digits [n]
+  
+    (let [k (int (Math/log10 n))
+          max-n (.pow (BigInteger. (str 10)) k)]
+      (-> (take (+ k 2) (iterate (fn [[num divisor output]] [(mod num divisor),(/ divisor 10),(conj output (quot num divisor))]) [n,max-n,[]]))
+          last
+      )
+    
+))
+(get-digits 0)
+(Math/log10 0)
+(max 10 1)
+(max 0 1)
+(Math/log10 0)
+(Math/log10 1)
+(defn get-digits [n]
+  
+    (let [k (int (Math/log10 (max n 1)))
+          max-n (.pow (BigInteger. (str 10)) k)]
+      (-> (take (+ k 2) (iterate (fn [[num divisor output]] [(mod num divisor),(/ divisor 10),(conj output (quot num divisor))]) [n,max-n,[]]))
+          last
+      )
+    
+))
+(get-digits 0)
+(Math/pow 0 1)
+(defn armstrong? [num] 
+   (let [d (get-digits num)]
+     (== (reduce #(+ %1 (Math/pow %2 (count d))) 0 d) num)
+))
+(armstrong? 0)
