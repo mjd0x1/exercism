@@ -4,23 +4,19 @@ import (
 	"strconv"
 )
 
-type raindrop struct {
-	k string
-	v int
-}
-
 //Convert ...Convert numbers to Pling Plang Plong
 func Convert(input int) string {
 
-	values := []raindrop{raindrop{k: "Pling", v: 3},
-		raindrop{k: "Plang", v: 5},
-		raindrop{k: "Plong", v: 7}}
-
 	output := ""
-	for _, drop := range values {
-		if input%drop.v == 0 {
-			output += drop.k
-		}
+
+	if input%3 == 0 {
+		output += "Pling"
+	}
+	if input%5 == 0 {
+		output += "Plang"
+	}
+	if input%7 == 0 {
+		output += "Plong"
 	}
 
 	if output != "" {
