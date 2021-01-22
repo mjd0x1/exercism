@@ -1,0 +1,128 @@
+(def s "ACGTGGTCTTAA")
+(def r {"A" C}
+r
+(def r {"A" C})
+{:a "asdasds",:b "asdasdas"}
+{"asd" "asdasdsa","s" "sadasdas"}
+("asd" {"asd" "asdasdsa","s" "sadasdas"})
+(stringify-keys {:a 1 :b {:c {:d 2}}})
+(stringify-keys {:a 1 :b 2})
+(use 'clojure.walk)
+(stringify-keys {:a 1 :b 2})
+(stringify-keys {:C 1 :G 2})
+("C" (stringify-keys {:C 1 :G 2}))
+(get "C" (stringify-keys {:C 1 :G 2}))
+((stringify-keys {:C 1 :G 2}) "C")
+((stringify-keys {:C "G" :G "C",:U "A",:A "T"}) "C")
+s
+(map #(use 'clojure.walk)
+(defn to-rna [dna] ;; <- arglist goes here
+  (map #((stringify-keys {:C "G" :G "C",:U "A",:A "T"}) %1) dna)
+)
+(to-rna "AAASDASS"_
+)
+(to-rna "AAASDASS")
+(to-rna "CCCCC")
+(defn to-rna [dna] ;; <- arglist goes here
+  (map #((stringify-keys {:C "G" :G "C" :U "A" :A "T"}) %1) dna)
+)
+(to-rna "CCCCC")
+(stringify-keys {:C "G" :G "C" :U "A" :A "T"})
+((stringify-keys {:C "G" :G "C" :U "A" :A "T"}) "A")
+(map #((stringify-keys {:C "G" :G "C" :U "A" :A "T"}) %) "AAAA")
+(map #(%) "AAAA")
+(map (fn [x] x)  "AAAA")
+(map (fn [x] (stringify-keys {:C "G" :G "C" :U "A" :A "T"}) x) "AAAA")
+(map (fn [x] ((stringify-keys {:C "G" :G "C" :U "A" :A "T"}) x)) "AAAA")
+(map (fn [x] ((stringify-keys {:C "G" :G "C" :U "A" :A "T"}) x)) "\A")
+(map (fn [x] ((stringify-keys {:C "G" :G "C" :U "A" :A "T"}) x)) ":A")
+(map (fn [x] ((stringify-keys {:C "G" :G "C" :U "A" :A "T"}) x)) "AA")
+(keyword :A)
+(map (fn [x] (:keyword x)) "AA")
+(keyword 'A')
+(map (fn [x] 1) "AA")
+(map (fn [x] x) "AA")
+(map (fn [x] (keyword x)) "AA")
+(keyword \A)
+(keyword (str \A))
+(map (fn [x] ((stringify-keys {:C "G" :G "C" :U "A" :A "T"}) (str x))) "AA")
+(defn to-rna [dna] ;; <- arglist goes here
+  (map #((stringify-keys {:C "G" :G "C" :U "A" :A "T"}) (str %1)) dna)
+)
+(to-rna "AAAATTT")
+(any nil (to-rna "AAAATTT"))
+(any? nil (to-rna "AAAATTT"))
+(some nil? (to-rna "AAAATTT"))
+(defn process [dna] (map #((stringify-keys {:C "G" :G "C" :U "A" :A "T"}) (str %1)) dna))
+(defn to-rna [dna] ;; <- arglist goes here
+       (let [p (process dna)] 
+          (if (some nil? p) p AssertionError)))
+(process "AAAACCC")
+(to-rna 
+)
+(to-rna "CCCC")
+(to-rna "A")
+(defn process [dna] (map #((stringify-keys {:C "G" :G "C" :U "A" :A "T"}) (str %1)) dna))
+(defn to-rna [dna] ;; <- arglist goes here
+       (let [p (process dna)] 
+          (if (some nil? p) AssertionError p)))
+(process "C")
+(defn process [dna] (map #((stringify-keys {:C "G" :G "C" :U "A" :A "T"}) (str %1)) dna))
+(use 'clojure.walk)
+(defn process [dna] (map #((stringify-keys {:C "G" :G "C" :U "A" :A "T"}) (str %1)) dna))
+(process "C")
+(process "CC")
+(join (process "CC"))
+(str (process "CC"))
+(process "CC")
+(use 'clojure.string)
+(use 'clojure.strings)
+(clojure.string/join (process "CC"))
+(defn process [dna] (map #((walk/stringify-keys {:C "G" :G "C" :U "A" :A "T"}) (str %1)) dna))
+(require '[clojure.string :as string])
+(require '[clojure.walk :as walk])
+(defn process [dna] (map #((walk/stringify-keys {:C "G" :G "C" :U "A" :A "T"}) (str %1)) dna))
+(process "AAAA")
+(defn to-rna [dna] 
+       (let [p (-> dna string/join process)] 
+          (if (some nil? p) AssertionError p)))
+(to-rna "A")
+(to-rna "AAAA")
+(defn to-rna [dna] 
+       (let [p (-> dna process string/join)] 
+          (if (some nil? p) AssertionError p)))
+(to-rna "AAAA")
+(to-rna "A")
+(require '[clojure.string :as string])
+(require '[clojure.walk :as walk])
+(defn process [dna] (map #((walk/stringify-keys {:C "G" :G "C" :U "A" :A "T"}) (str %1)) dna))
+(defn to-rna [dna] 
+       (let [p (-> dna process string/join)] 
+          (if (some nil? p) AssertionError p)))
+(to-rna "C")
+(to-rna "G")
+(to-rna "U")
+(to-rna "A")
+(to-rna "C")
+(to-rna "G")
+(to-rna "A")
+(to-rna "T")
+(require '[clojure.string :as string])
+(require '[clojure.walk :as walk])
+(defn process [dna] (map #((walk/stringify-keys {:C "G" :G "C" :T "A" :A "U"}) (str %1)) dna))
+(defn to-rna [dna] 
+       (let [p (-> dna process string/join)] 
+          (if (some nil? p) AssertionError p)))
+(to-rna "XCGFGGTDTTAA")
+(require '[clojure.string :as string])
+(require '[clojure.walk :as walk])
+(defn process [dna] (map #((walk/stringify-keys {:C "G" :G "C" :T "A" :A "U"}) (str %1)) dna))
+(defn to-rna [dna] 
+       (let [p (process dna)] 
+          (if (some nil? p) AssertionError (string/join p))))
+(to-rna "XCGFGGTDTTAA")
+(throw AssertionError)
+(throw (AssertionError. "Wrong input.")
+)
+(throw (AssertionError. "Wrong input."))
+)
