@@ -21,38 +21,37 @@ defmodule ListOps do
   end
 
   @spec map(list, (any -> any)) :: list
-  def map(l, f) do map_(l,f,[]) end
+  def map(l, f) do map_(l,f,[]) |> reverse end
   defp map_([],_,acc) do acc end
   defp map_([x | xs],f,acc) do
-    map_(xs,f,acc ++ [f.(x)])
+    map_(xs,f, [f.(x) | acc])
   end
 
   @spec filter(list, (any -> as_boolean(term))) :: list
-  def filter(l, f) do filter_(l,f,[]) end
+  def filter(l, f) do filter_(l,f,[]) |> reverse end
   defp filter_([], _,acc) do acc end
   defp filter_([x | xs], f,acc) do
       case f.(x) do
           false  -> filter_(xs,f,acc)
-          true  ->  filter_(xs,f,acc ++ [x])
+          true  ->  filter_(xs,f,[x | acc])
       end
   end
-
 
   @type acc :: any
   @spec reduce(list, acc, (any, acc -> acc)) :: acc
   def reduce([], acc, _) do acc end
   def reduce([x | xs], acc, f) do
-    reduce(xs,acc + f.(acc),f)
+    reduce(xs,f.(x,acc),f)
   end
-
 
   @spec append(list, list) :: list
   def append(a, b) do
-    r = reverse(a)
-        x  | b ]
+     reverse(a)
+     |> reduce(b, &([&1 | &2]))
   end
 
   @spec concat([[any]]) :: [any]
   def concat(ll) do
+     reverse(ll) |> reduce([],&(append(&1,&2)))
   end
 end
