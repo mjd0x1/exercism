@@ -126,3 +126,99 @@ s
 )
 (throw (AssertionError. "Wrong input."))
 )
+(assert (= (+ 2 2) 5) "adasdas")
+(assert (= (+ 2 2) 4) "adasdas")
+(string/join nil)
+(assert (= (+ 2 2) 4) "adasdas")
+(assert (= (+ 2 2) 3) "adasdas")
+(assert (= (+ 2 2) 4) "adasdas")
+(-> (assert (= (+ 2 2) 4) "adasdas") string/join)
+(-> (assert (= (+ 2 2) 4) "adasdas") clojure.string/join)
+(assert (= 3 3) "sadasdasd")
+(nil? (assert (= 3 3) "sadasdasd"))
+(nil? (assert (= 3 3) "sadasdasd") "HHH")
+(nil? (assert (= 3 3) "sadasdasd") "HHH" "")
+(when (nil? (assert (= 3 3) "sadasdasd")) "AAA")
+(def s "UGCACCAGAAUU")
+(require '[clojure.string :as string]
+         '[clojure.walk :as walk])
+(defn process [dna]
+  (map #((walk/stringify-keys {:C "G" :G "C" :T "A" :A "U"}) (str %1)) dna))
+(defn to-rna [dna]
+  (let [p (process dna)]
+    (when (nil? (assert (some nil? p) "incorrect nucleotide.")) (string/join p))))
+(to-rna s)
+(def s "UGCACCAGAAUU")
+(to-rna s)
+(defn to-rna [dna]
+  (let [p (process dna)]
+    (if (some nil? p) (throw (AssertionError. "incorrect nucleotide.")) (string/join p))))
+(to-rna s)
+s
+(process s)
+(process "A")
+(process "ACGTGGTCTTAA")
+(to-rna "ACGTGGTCTTAA")
+(process "ACGTGGTCTTAA")
+(require '[clojure.string :as string])
+(defn process [dna]
+  (map #({\C "G" \G "C" \T "A" \A "U"} (str %1)) dna))
+(defn to-rna [dna]
+  (let [p (process dna)]
+    (if (some nil? p) (throw (AssertionError. "incorrect nucleotide.")) (string/join p))))
+(to-rna "U")
+(to-rna "T")
+(to-rna \T)
+(to-rna 'T')
+(to-rna "T")
+(process "T")
+{\C "G" \G "C" \T "A" \A "U"}
+({\C "G" \G "C" \T "A" \A "U"} \C)
+(str \C)
+(map #({\C "G" \G "C" \T "A" \A "U"} (str %1)) "T"))
+(map #({\C "G" \G "C" \T "A" \A "U"} (str %1)) "T")
+(map #({\C "G" \G "C" \T "A" \A "U"} (str %1)) "TT")
+(map #({\C "G" \G "C" \T "A" \A "U"} (str %1)) (seq "TT"))
+(map #({"C" "G" "G" "C" "T "A" "A" "U"} (str %1)) (seq "TT"))
+(map #({"C" "G" "G" "C" "T "A" "A" "U"} (str %1)) "TT")
+(map #({"C" "G" "G" "C" "T "A" "A" "U"} (str %1)) "T")
+(map #({\C "G" \G "C" \T "A" \A "U"} (str %1)) "T")
+(map #({\C "G" \G "C" \T "A" \A "U"} %1) "T")
+(defn process [dna]
+  (map #({\C "G" \G "C" \T "A" \A "U"} %1) dna))
+(defn to-rna [dna]
+  (let [p (process dna)]
+    (if (some nil? p) (throw (AssertionError. "incorrect nucleotide.")) (string/join p))))
+(to-rna "T")
+(to-rna "ACGTGGTCTTAA")
+(process "ASDASDASD")
+(string/join (process "ASDASDASD"))
+(count "ASDADASD")
+(defn process [dna]
+  (map #({\C "G" \G "C" \T "A" \A "U"} %1) dna))
+(defn to-rna [dna]
+  (let [p (->  (process dna) string/join)]
+    (if (= (count dna) (count p)) p (throw (AssertionError. "incorrect nucleotide.")))))
+(to-rna "ACGTGGTCTTAA")
+(to-rna "ACGTGGTCTTAAR")
+s
+(to-rna s)
+(to-rna "ACGTGGTCTTAA")
+(assert (= (to-rna "ACGTGGTCTTAA") 8)
+(assert (= (to-rna "ACGTGGTCTTAA") 8))
+(assert (= (to-rna "ACGTGGTCTTAA") ) 8
+(assert (= (to-rna "ACGTGGTCTTAA")) 8)
+(require '[clojure.string :as string])
+(defn process [dna]
+  (map #({\C "G" \G "C" \T "A" \A "U"} %1) dna))
+(defn to-rna [dna]
+  (let [p (->  (process dna) string/join)]
+    (if (= (count dna) (count p)) p (throw (AssertionError. "incorrect nucleotide.")))))
+(to-rna "XCGFGGTDTTAA")
+(assert (= 2 2))
+(assert (= 2 1))
+(defn to-rna [dna]
+  (let [p (->  (process dna) string/join)]
+    (if (= (count dna) (count p)) p (assert (= (count dna) (count p))))))
+(to-rna "XCGFGGTDTTAA")
+(to-rna "ACGTGGTCTTAA")

@@ -1,11 +1,11 @@
 (ns rna-transcription)
 
-(require '[clojure.string :as string]
-          '[clojure.walk :as walk])
+(require '[clojure.string :as string])
 
-(defn process [dna] 
-  (map #((walk/stringify-keys {:C "G" :G "C" :T "A" :A "U"}) (str %1)) dna))
+(defn process [dna]
+  (map {\C "G" \G "C" \T "A" \A "U"} dna))
 
-(defn to-rna [dna] 
-       (let [p (process dna)] 
-          (if (some nil? p) (throw (AssertionError. "incorrect nucleotide.")) (string/join p))))
+(defn to-rna [dna]
+  (let [p (->  (process dna) string/join)]
+    (assert (= (count dna) (count p)))
+    p))

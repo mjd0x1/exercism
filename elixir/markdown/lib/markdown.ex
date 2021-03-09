@@ -10,29 +10,62 @@ defmodule Markdown do
     iex> Markdown.parse("#Header!\n* __Bold Item__\n* _Italic Item_")
     "<h1>Header!</h1><ul><li><em>Bold Item</em></li><li><i>Italic Item</i></li></ul>"
   """
-  @spec parse(String.t()) :: String.t()
+
+  #re-factor parse using pipes
+  @spec parse(binary) :: binary
   def parse(m) do
-    patch(Enum.join(Enum.map(String.split(m, "\n"), fn t -> process(t) end)))
+    m
+    |> String.split("\n")
+    |> Enum.map_join(&(process(&1)))
+    |> patch
+
   end
 
+  #rewrite process using 3 functions process/parse_word/h
+  defp process(m) do
 
-  def mikeparse(m) do
-      s = String.split(m)
-      [x | xs]  = s
-      case x do
-        "#" -> "blah"
-        _ -> add_elements(Enum.join(s," "),"<p>")
+      #process word tags..
+      s = String.split(m, " ")
+      [f | e] = Enum.map(s,&(parse_word(&1,"__","<strong>","</strong>")))
+             |> Enum.map(&(parse_word(&1,"_","<em>","</em>")))
 
+      #process global tags
+      case String.contains?(f,"#") do
+        true -> "<#{h(f)}>"  <> Enum.join(e," ") <> "</#{h(f)}>"
+        _ -> case f do
+          "*" -> "<li>" <> Enum.join(e," ") <> "</li>"
+          _ -> "<p>" <> Enum.join([f | e]," ") <> "</p>"
+        end
       end
 
   end
 
-  defp add_elements(s,element) do element <> s <> element end
+  defp h(x) do "h" <> Integer.to_string(String.length(x)) end
+
+  defp parse_word(m,check,open_tag,close_tag) do
+    case String.split(m,check) do
+        [_,b,_] -> open_tag <> b <> close_tag
+        ["",b] -> open_tag <> b
+        [b,_]  -> b <> close_tag
+        [b] -> b
+    end
+  end
+
+  #re-use patch to post adjust list tags,  refactor to pipe
+  defp patch(l) do
+    l
+    |> String.replace("<li>", "<ul>" <> "<li>", global: false)
+    |> String.replace_suffix("</li>","</li>" <> "</ul>")
+
+  end
+
+  #re-name parse to oldparse, process to oldprocess
+  def oldparse(m) do
+    patch(Enum.join(Enum.map(String.split(m, "\n"), fn t -> oldprocess(t) end)))
+  end
 
 
-
-
-  defp process(t) do
+  defp oldprocess(t) do
     if String.starts_with?(t, "#") || String.starts_with?(t, "*") do
       if String.starts_with?(t, "#") do
         enclose_with_header_tag(parse_header_md_level(t))
@@ -86,11 +119,5 @@ defmodule Markdown do
     end
   end
 
-  defp patch(l) do
-    String.replace_suffix(
-      String.replace(l, "<li>", "<ul>" <> "<li>", global: false),
-      "</li>",
-      "</li>" <> "</ul>"
-    )
-  end
+
 end
