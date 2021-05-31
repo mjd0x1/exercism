@@ -8,28 +8,30 @@ import (
 
 //Valid checks valid per luhn number ...
 func Valid(input string) bool {
-	a := strings.Join(strings.Split(input, " "), "")
+	a := strings.ReplaceAll(input, " ", "")
 
 	if len(a) == 1 {
 		return false
 	}
 
 	sum := 0
-	for i := len(a) - 1; i >= 0; i-- {
-		m, err := strconv.Atoi(string(a[i]))
+	alternate := len(a)%2 == 0
+
+	for _, v := range a {
+		m, err := strconv.Atoi(string(v))
 		if err != nil {
 			return false
 		}
-		if ((len(a) - i) % 2) == 0 {
-			check := m*2 - 9
-			if check > 0 {
-				sum += check
-			} else {
-				sum += m * 2
+
+		if alternate {
+			m *= 2
+			if m > 9 {
+				m -= 9
 			}
-		} else {
-			sum += m
 		}
+		sum += m
+
+		alternate = !alternate
 	}
 	return sum%10 == 0
 }

@@ -1,0 +1,500 @@
+              [(str acc (repeat-char (Integer/parseInt number) x)),"0"])) ["","0"] (seq cipher-text))))
+(run-length-decode "WW5B")
+(def number-in-char? #(and (<= (int %) 57) (>= (int %) 48)))
+(def repeat-char #(apply str (repeat %1 %2)))
+(def char-to-number #(- (int %) 48))
+(defn run-length-decode
+  "decodes a run-length-encoded string"
+  [cipher-text]
+  (first
+   (reduce (fn [[acc,number] x]
+            (if (number-in-char? x)
+              [(str acc ""),(str number x)]
+              [(str acc (repeat-char (Integer/parseInt number) x)),"1"])) ["","1"] (seq cipher-text))))
+(run-length-decode "4WB")
+(run-length-decode "WB")
+(defn run-length-decode
+  "decodes a run-length-encoded string"
+  [cipher-text]
+  (first
+   (reduce (fn [[acc,number] x]
+            (if (number-in-char? x)
+              (if (= number "1") [(str acc ""),(str x)] [(str acc ""),(str number x)])
+              [(str acc (repeat-char (Integer/parseInt number) x)),"1"])) ["","1"] (seq cipher-text))))
+(run-length-decode "12WB")
+(run-length-decode "123WB")
+(run-length-decode "12WB")
+(defn run-length-decode
+  "decodes a run-length-encoded string"
+  [cipher-text]
+  (first
+   (reduce (fn [[acc,number] x]
+            (if (number-in-char? x)
+              (if (= number "0") [(str acc ""),(str x)] [(str acc ""),(str number x)])
+              [(str acc (repeat-char (Integer/parseInt number) x)),"0"])) ["","0"] (seq cipher-text))))
+(run-length-decode "12WB1")
+(run-length-decode "12WB")
+(def number-in-char? #(and (<= (int %) 57) (>= (int %) 48)))
+(def repeat-char #(apply str (repeat %1 %2)))
+(def char-to-number #(- (int %) 48))
+(defn run-length-decode
+  "decodes a run-length-encoded string"
+  [cipher-text]
+  (first
+   (reduce (fn [[acc,number] x]
+            (if (number-in-char? x)
+              [(str acc ""),(str number x)]
+              [(str acc (repeat-char (Integer/parseInt number) x)),"1"])) ["","1"] (seq cipher-text))))
+(run-length-decode "WBC")
+(run-length-decode "WB2C")
+(def number-in-char? #(and (<= (int %) 57) (>= (int %) 48)))
+(def repeat-char #(apply str (repeat %1 %2)))
+(def char-to-number #(- (int %) 48))
+(defn run-length-decode
+  "decodes a run-length-encoded string"
+  [cipher-text]
+  (first
+   (reduce (fn [[acc,number] x]
+            (if (number-in-char? x)
+              [(str acc ""),(str number x)]
+              [(str acc (if (= number "0") x (repeat-char (Integer/parseInt number) x))),"0"])) ["","0"] (seq cipher-text))))
+(run-length-decode "WBC")
+(run-length-decode "WB2C")
+(run-length-decode "WB10C")
+(run-length-decode "WB10CB")
+(defn run-length-decode
+  "decodes a run-length-encoded string"
+  [cipher-text]
+  (first
+   (reduce (fn [[acc,number] x]
+             (if (number-in-char? x)
+               [(str acc ""),(str number x)]
+               [(str acc (if (= number "0") x (repeat-char (Integer/parseInt number) x))),"0"])) ["","0"] cipher-text)))
+(run-length-decode "WBC")
+(run-length-decode "WB2C")
+(run-length-decode "WB10C")
+(run-length-decode "2WB10C")
+(defn run-length-decode
+  "decodes a run-length-encoded string"
+  [cipher-text]
+  (first
+   (reduce (fn [[acc,number] x]
+             (if (number-in-char? x)
+               [(str acc ""),(str number x)]
+               [(str acc (if (= number "0") x (repeat-char number x))),"0"])) ["","0"] cipher-text)))
+(run-length-decode "WBC")
+(run-length-decode "2WBC")
+(def number-in-char? #(and (<= (int %) 57) (>= (int %) 48)))
+(def repeat-char #(apply str (repeat %1 (Integer/parseInt %2))))
+(defn run-length-decode
+  "decodes a run-length-encoded string"
+  [cipher-text]
+  (first
+   (reduce (fn [[acc,number] x]
+             (if (number-in-char? x)
+               [(str acc ""),(str number x)]
+               [(str acc (if (= number "0") x (repeat-char number x))),"0"])) ["","0"] cipher-text)))
+(run-length-decode "WBC")
+(run-length-decode "2WBC")
+(def repeat-char #(apply str (repeat (Integer/parseInt %1) %2)))
+(run-length-decode "WBC")
+(run-length-decode "2WBC")
+(run-length-decode "5WB2C")
+(partition-by identity "asdaasdas")
+(run-length-decode "2WBC")
+(re-seq #"\d" "clojure 1.1.0")
+(re-seq #"\d" "2a3b4c")
+(re-seq #"\d\w" "2a3b4c")
+(re-seq #"\d\w" "12WB12W3B24WB")
+(re-seq #"\d+w" "12WB12W3B24WB")
+(re-seq #"d+w" "12WB12W3B24WB")
+(re-seq #"\d+w" "12WB12W3B24WB")
+(re-seq #"\dw" "12WB12W3B24WB")
+(re-seq #"\d\w" "12WB12W3B24WB")
+(re-seq #"\d+[A-Z]" "12WB12W3B24WB")
+(re-seq #"\d*[A-Z]" "12WB12W3B24WB")
+(map last (re-seq #"\d*[A-Z]" "12WB12W3B24WB"))
+(Integer/parse "12W")
+(parse-int "12W")
+(parse-int "10not213")
+(re-seq #"\d*[A-Z]" "12WB12W3B24WB")
+(re-seq #"\d+" "12W)
+(re-seq #"\d+" "12W")
+(re-seq #"\d*" "12W")
+(re-seq #"\d*[A-Z]" "12WB12W3B24WB")
+(re-seq #"\d*[A-Z]" "2A5B")
+(re-seq #"\d*[A-Z]" "12A5B")
+(re-seq #"\d*[A-Z]" "12A5BC")
+(re-seq #"\d*" "12A")
+(re-seq #"\d*" "A")
+(re-seq #"\d*" "12A")
+(re-seq #"\d*" "A")
+(re-seq #"\d*" "12A")
+(first (re-seq #"\d*" "12A"))
+(Integer/parseInt  (first (re-seq #"\d*" "12A")))
+(int  (first (re-seq #"\d*" "12A")))
+(num  (first (re-seq #"\d*" "12A")))
+(read-string  (first (re-seq #"\d*" "12A")))
+(first (re-seq #"\d*" "12A"))
+(repeat 2 "A")
+(apply str (repeat 2 "A"))
+(def get-number #(read-string  (first (re-seq #"\d*" %))))
+(def get-letter #(last %))
+(get-number "5A")
+(get-letter "5A")
+(repeat 5 "A")
+(repeat (get-number "5A") (get-letter "5A"))
+(re-seq #"\d*[A-Z]" "12A5BC")
+(map #((repeat (get-number "5A") (get-letter "5A")))  (re-seq #"\d*[A-Z]" "12A5BC")
+)
+(map #((repeat (get-number %) (get-letter %)))  (re-seq #"\d*[A-Z]" "12A5BC"))
+(map #(repeat (get-number %) (get-letter %))  (re-seq #"\d*[A-Z]" "12A5BC"))
+(map #(repeat (get-number %) (get-letter %)) (re-seq #"\d*[A-Z]" "12A5BC"))
+(re-seq #"\d*[A-Z]" "12A5BC")
+(first (re-seq #"\d*[A-Z]" "12A5BC"))
+(map #(first %) (re-seq #"\d*[A-Z]" "12A5BC"))
+(map #(get-number %) (re-seq #"\d*[A-Z]" "12A5BC"))
+(map #(get-number %) (vec (re-seq #"\d*[A-Z]" "12A5BC")))
+(re-seq #"\d*[A-Z]" "12A5BC")
+(vec (re-seq #"\d*[A-Z]" "12A5BC"))
+(get-number "12A")
+(map #(get-number %) (vec (re-seq #"\d*[A-Z]" "12A5BC"))
+)
+(map #(get-number %) (vec (re-seq #"\d*[A-Z]" "12A5BC")))
+(def get-number #(Integer/parseInt  (first (re-seq #"\d*" %))))
+(map #(get-number %) (vec (re-seq #"\d*[A-Z]" "12A5BC")))
+(get-number "12A")
+(re-seq #"\d*[A-Z]" "12A5BC")
+(map #(first (re-seq #"\d*" %))  (re-seq #"\d*[A-Z]" "12A5BC")
+)
+(map #(first (re-seq #"\d*" %))  (doall (re-seq #"\d*[A-Z]" "12A5BC")))
+(doall (re-seq #"\d*[A-Z]" "12A5BC")
+)
+(map first (doall (re-seq #"\d*[A-Z]" "12A5BC"))
+)
+(map first (doall (re-seq #"\d*[A-Z]" "12A5BC")))
+(map #(last %) (doall (re-seq #"\d*[A-Z]" "12A5BC")))
+(re-seq #"\d*[A-Z]" "12A5BC"))
+(re-seq #"\d*[A-Z]" "12A5BC")
+(Integer/parseInt "12A")
+(Integer/parseInt "12")
+(Integer/parseInt (re-find #"\d+" "12A"))
+(map #(Integer/parseInt (re-find #"\d+" "12A")) (re-seq #"\d*[A-Z]" "12A5BC"))
+(map #(Integer/parseInt (re-find #"\d+" %)) (re-seq #"\d*[A-Z]" "12A5BC"))
+(map #(Integer/parseInt (re-find #"\d*" %) (re-seq #"\d*[A-Z]" "12A5BC"))
+)
+(map #(Integer/parseInt (re-find #"\d*" %) (re-seq #"\d*[A-Z]" "12A5BC")))
+(map #(Integer/parseInt (re-find #"\d*" %)) (re-seq #"\d*[A-Z]" "12A5BC")))
+(map #(Integer/parseInt (re-find #"\d*" %)) (re-seq #"\d*[A-Z]" "12A5BC"))
+(map #(Integer/parseInt (re-find #"\d*" %) (re-seq #"\d*[A-Z]" "12A5BC"))
+(re-seq #"\d*[A-Z]" "12A5BC")
+(map #(re-find #"\d*" %)  (re-seq #"\d*[A-Z]" "12A5BC"))
+(read-string "12")
+(read-string "12A")
+(split "12,2" #",")
+(clojure.split "12,2" #",")
+(clojure.string/split "12,2" #",")
+(clojure.string/split "12A" #",")
+(clojure.string/split "12A" #"\d*")
+(clojure.string/split "12A" #"[A-Z]")
+(clojure.string/split "12A" #"\d*[A-Z]")
+(clojure.string/split "12A" #"\[A-Z]")
+(clojure.string/split "12A" #"[A-Z]")
+(clojure.string/split "B" #"[A-Z]")
+(re-find #"\d*" "12A")
+(re-find #"\d*" "A")
+(re-find #"\d*" "12A")
+(if ((re-find #"\d*" "12A")
+(def get-number 
+[input]
+  (let [s (re-find #"\d*" input)]
+     (if (= s "") 1 (read-string s))))
+(defn get-number 
+[input]
+  (let [s (re-find #"\d*" input)]
+     (if (= s "") 1 (read-string s))))
+(get-number "12A")
+(get-number "A")
+(def get-letter #(last %))
+(def get-number 
+  #(let [s (re-find #"\d*" %)]
+     (if (= s "") 1 (read-string s))))
+(map #(repeat (get-number %) (get-letter %)) (re-seq #"\d*[A-Z]" "12A5BC"))
+(-> (map #(repeat (get-number %) (get-letter %)) (re-seq #"\d*[A-Z]" "12A5BC")) flatten)
+(-> (map #(repeat (get-number %) (get-letter %)) (re-seq #"\d*[A-Z]" "12A5BC")) flatten (apply str))
+(-> (map #(repeat (get-number %) (get-letter %)) (re-seq #"\d*[A-Z]" "12A5BC")) flatten (apply str)
+)
+(-> (map #(repeat (get-number %) (get-letter %)) (re-seq #"\d*[A-Z]" "12A5BC")) flatten)
+(def p (-> (map #(repeat (get-number %) (get-letter %)) (re-seq #"\d*[A-Z]" "12A5BC")) flatten))
+p
+(apply str p)
+(defn run-length-decode
+  "decodes a run-length-encoded string"
+  [cipher-text]
+  (->> (re-seq #"\d*[A-Z]" cipher-text)
+       (map #(repeat (get-number %) (get-letter %)))
+       flatten)) 
+       
+ (run-length-decode "12AB")
+(defn run-length-decode
+  "decodes a run-length-encoded string"
+  [cipher-text]
+  (->> (re-seq #"\d*[A-Z]" cipher-text)
+       (map #(repeat (get-number %) (get-letter %)))
+       flatten
+       (apply str))) 
+(run-length-decode "12AB4CD")
+(def s "5A")
+(defn get-frequency
+  "input a list of elements and return its frequency string"
+  [list]
+  (let [[x & _] list c (count list)]
+    (str (if (> c 1) c "") x)))
+(get-frequency s)
+  [list]
+(def s "AAAAA")
+(-> (map #(repeat (get-number %) (get-letter %)) (re-seq #"\d*[A-Z]" "12A5BC")) flatten (apply str)
+(get-frequency s)
+(cond-> 10
+  false inc)
+  true inc)
+(cond-> 10
+(cond-> 10 true inc)
+(cond-> 10 false inc)
+(cond-> 10
+    false inc)
+(cond-> 10
+   true inc)
+(cond-> "A"
+   (= "AAAAA" "") (str (count "AAAAA")) true "A")  
+(cond -> "A"
+     false "10" true "A")
+(cond-> "A"
+    false "10"
+    true "A")
+(cond -> "A"
+   true identity)
+(cond-> "A"
+   true identity)
+(cond-> "A"
+   false "10"
+   true identity)
+(cond-> "A"
+    true (str 10)
+    true identity)
+(cond-> "A"
+    true (count "AAAA")
+    true identity)
+(count "AAAA")
+(cond-> "A" 
+    (not= "AAAAA" "") (str (count rst)))
+    (not= "AAAAA" "") (str (count "AAAAA")))
+(cond-> "A" 
+   (not= "AAAA" "") (str (count "AAAA")))
+(defn get-frequency [[fst & rst :as part]]
+  "input a list of elements and return its frequency string"
+  (cond-> fst
+    (not= rst "") (str (count rst))))
+(get-frequency "AAAAA")
+(get-frequency "A")
+(defn get-frequency [[fst & rst :as part]]
+  "input a list of elements and return its frequency string"
+  (cond->> fst
+    (not= rst "") (str (count rst))))
+(get-frequency "AAAAA")
+(defn get-frequency [[fst & rst :as part]]
+  "input a list of elements and return its frequency string"
+  (cond->> fst
+    (not= rst "") (str (count part))))
+    (not= rst "") (str (count rst))))
+(get-frequency "AAAAA")
+(get-frequency "AAAA")
+(get-frequency "A")
+(defn get-frequency [[fst & rst :as part]]
+  "input a list of elements and return its frequency string"
+  (cond->> fst
+    (not= rst "") (str (count part))))
+    
+(get-frequency "XYZ")
+(get-frequency "X")
+(defn get-frequency [[fst & rst :as part]]
+  "input a list of elements and return its frequency string"
+  (cond->> fst
+    (not= rst "") (str (count part)) (= rst "") identity))
+    
+(get-frequency "AAAAAA")
+(get-frequency "AAA")
+(get-frequency "A")
+(identity "A")
+(identity "A" "A")
+(identity "A")
+(defn get-frequency [[fst & rst :as part]]
+  "input a list of elements and return its frequency string"
+  (cond->> fst
+    (not= rst "") (str (count part)) true identity))
+    
+(get-frequency "A")
+(get-frequency "AAAAA")
+(get-frequency "AAAAAA")
+(get-frequency "A")
+(get-frequency "")
+(defn get-frequency [[fst & rst :as part]]
+  "input a list of elements and return its frequency string"
+  (cond->> fst
+    (not= rst nil) (str (count part)) true identity))
+    
+(get-frequency "AAAAA")
+(get-frequency "A")
+(get-frequency "AAAAA")
+(defn get-frequency [[fst & rst :as part]]
+  "input a list of elements and return its frequency string"
+  (cond->> fst
+    (not= rst nil) (str (count part)) (= rst nil) identity))
+(get-frequency "AAAAA")
+(get-frequency "A")
+(defn get-frequency [[fst & rst :as part]]
+  "input a list of elements and return its frequency string"
+  (cond->> fst
+    (not= rst nil) (str (count part)) (= rst nil) (str identity)))
+(get-frequency "A")
+(defn get-frequency [[fst & rst :as part]]
+  "input a list of elements and return its frequency string"
+  (cond->> fst
+    (not= rst nil) (str (count part)) (= rst nil) (str)))
+(get-frequency "A")
+(get-frequency "AAAAAA")
+(re-seq #"\d*." "2A5BC")
+(re-seq #"(\d+)([a-zA-A])" "2A5BC")
+(re-seq #"(\d*)([a-zA-A])" "2A5BC")
+(re-seq #"(\d+)([a-zA-A])" "2A5BC")
+(re-seq #"(\d+)(\w)" "2A5BC")
+(re-seq #"(\d*)(\w)" "2A5BC")
+(defn dat [s] (let [f (re-seq #"(\d*)(\w)" s)] f)) 
+(dat "2A5BC")
+(dat "2A5BCD")
+(defn get-num [[_ n c]] (n c))  
+(get-num ["2A" "2" "A"])
+(defn get-num [[_ n c]] [n c])  
+(get-num (dat "2A5BCD")
+(get-num (dat "2A5BCD"))
+)
+(get-num (dat "2A5BCD"))
+(get-num (first (dat "2A5BCD")))
+(defn get-num [[_ n c]] [(read-string n) c])  
+(get-num (first (dat "2A5BCD")))
+(repeat (get-num (first (dat "2A5BCD"))))
+(repeat 2 "A")
+(apply repeat [2 "A"])
+(re-seq #"(\d*)(\w)" "2A5BCD")
+(map get-num-char (re-seq #"(\d*)(\w)" "2A5BCD"))
+(defn get-num-char [[_ n c]] [(read-string n) c])
+(map get-num-char (re-seq #"(\d*)(\w)" "2A5BCD"))
+(map #(get-num-char %) (re-seq #"(\d*)(\w)" "2A5BCD"))
+(get-num-char "2AB")
+(get-num-char ["2A" "2" "A"])
+(re-seq #"(\d*)(\w)" "2A5BCD")
+(map identity (re-seq #"(\d*)(\w)" "2A5BCD"))
+(map get-num-char (re-seq #"(\d*)(\w)" "2A5BCD"))
+(get-num-char (first (re-seq #"(\d*)(\w)" "2A5BCD")))
+(map get-num-char (re-seq #"(\d*)(\w)" "2A5BCD"))
+(map #(get-num-char %) (re-seq #"(\d*)(\w)" "2A5BCD"))
+(map identity (re-seq #"(\d*)(\w)" "2A5BCD"))
+(map  (re-seq #"(\d*)(\w)" "2A5BCD"))
+(defn getData [[_ n c]] [(read-string n) c])
+(map getData (re-seq #"(\d*)(\w)" "2A5BCD"))
+(map (getData) (re-seq #"(\d*)(\w)" "2A5BCD"))
+(map #(getData %) (re-seq #"(\d*)(\w)" "2A5BCD"))
+(re-seq #"(\d*)(\w)" "2A5BCD")
+(defn getData [[_ n c]] [(if (= n "") 1 (read-string n)) c])
+(map getData (re-seq #"(\d*)(\w)" "2A5BCD"))
+(map (apply repeat getData) (re-seq #"(\d*)(\w)" "2A5BCD"))
+(map #(apply repeat (getData %)) (re-seq #"(\d*)(\w)" "2A5BCD"))
+(defn get-num-char [[_ n c]] [(if (= n "") 1 (read-string n)) c])
+(defn run-length-decode
+  "decodes a run-length-encoded string"
+  [cipher-text]
+  (->> (re-seq #"(\d*)(\w)" cipher-text)
+       (map #(apply repeat (get-num-char %)))
+       flatten
+       (apply str))) 
+(run-length-decode "zzz ZZ  zZ")
+(run-length-decode "2 hs2q q2w2 ")
+(re-seq #"(\d*)(\w)" "2 hs2q q2w2 ")
+(re-seq #"(\d*)(\W)" "2 hs2q q2w2 ")
+(re-seq #"(\d*)(\w\s)" "2 hs2q q2w2 ")
+(re-seq #"(\d*)(\w)" "2 hs2q q2w2 ")
+(re-seq #"(\d*)(/)" "2 hs2q q2w2 ")
+(re-seq #"(\d*)(.)" "2 hs2q q2w2 ")
+(defn run-length-decode
+  "decodes a run-length-encoded string"
+  [cipher-text]
+  (->> (re-seq #"(\d*)(.)" cipher-text)
+       (map #(apply repeat (get-num-char %)))
+       flatten
+       (apply str))) 
+(defn get-num-char [[_ n c]] [(cond-> n 
+                               (= n "") (read-string)) c])
+(get-num-char ["a" "2" "C"])
+(defn get-num-char [[_ n c]] [(cond->> n 
+                               (= n "") (read-string)) c])
+(get-num-char ["a" "2" "C"])
+(defn get-num-char [[_ n c]] [(cond->> n 
+                               (not= n "") (read-string)) c])
+(get-num-char ["a" "2" "C"])
+(defn get-num-char [[_ n c]] [(cond-> n 
+                               (not= n "") (read-string)) c])
+(get-num-char ["a" "2" "C"])
+(get-num-char ["a" "" "C"])
+(1)
+(inc)
+lein repl
+(re-seq #"(\d*)(.)" "A2B")
+(defn get-num-char [[_ n c]] [(cond->> n (= n "") (str 1) true read-string) c])
+(get-num-char ["1" "2" "A"])
+(get-num-char ["1" "" "A"])
+(repeat 2 "A")
+(repeat "A")
+(repeat 1 "A")
+(seq "")
+(repeat nil "A")
+(seq "2")
+(true? (seq "2"))
+(true? nil)
+(re-seq #"(\d*)(.)" "2AB3C")
+(seq "3")
+(cond->> c
+2C(seq n) (repeat ....)))
+(cond->> "A" (seq "") "2")
+(repeat 2 "A")
+(repeat (seq "") "A")
+(cond->> "A" (seq "2") (repeat 2 "A"))
+(cond->> "A" (seq "2") (repeat 2))
+(defn get-num-char [[_ n c]] [(cond->> c (seq n) (repeat n))])
+(get-num-char ["2" "" "A"]
+)
+(get-num-char ["2" "" "A"])
+(defn get-num-char [[_ n c]] (cond->> c (seq n) (repeat n)))
+(get-num-char ["2" "" "A"])
+(get-num-char ["2" "2" "A"])
+(defn get-num-char [[_ n c]] (cond->> c (seq n) (repeat (read-string n))))
+(get-num-char ["2" "" "A"])
+(get-num-char ["2" "3" "A"])
+(seq "")
+(seq "A")
+(true? (seq "A"))
+(true? (seq "2"))
+(true? (seq "1"))
+(cond->> 1 (seq "1") (inc))
+(cond->> 1 (seq "") (inc))
+(seq "")
+(seq "2")
+(true? (seq "2"))
+(true? (seq "22"))
+(true? (seq ""))
+(false? (seq ""))
+(true? (seq "2"))
+(true? false)
+(false? false)
+(seq "2")
+(cond->> 1 (seq "2") (inc))
+(cond->> 1 (seq "") (inc))
