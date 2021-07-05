@@ -1,72 +1,109 @@
-//
-// This is only a SKELETON file for the 'Linked List' exercise. It's been provided as a
-// convenience to get you started writing code faster.
-//
 
 class Node {
-  next  = {}
-  previous ={}
-  value  = 0
+
+  constructor(p,n,v){
+    this.previous = p
+    this.next = n
+    this.value = v
+  }
 }
 
-class LinkedList {
-  root_node
-  current_node
-  count
+ export class LinkedList {
 
   constructor(){
-    this.root_node = {}
-    this.current_node = {}
-    this.count = 0 
+    this.head =  null
+    this.tail = null
+    this.count_items= 0
   }
   
   push(val) {
-     
-     const n = new Node()
-     n.value = val
-     n.previous = this.current_node
-     if (this.root_node == {}) { this.root_node = n}
-     this.current_node.next = n
-     this.current_node = this.current_node.next
-     this.count +=1 
-     
-  }
-
-  next() {
-     this.current_node = this.current_node.next
-     return this
-  }
-
-  get_root() {
-    return this.root_node
-  }
-
-  previous() {
-    this.current_node = this.current_node.previous
-    return this
+     const n  =  new Node(null,null,val)
+     if (this.count_items == 0) {
+       this.head= n
+       this.tail = n
+     } else {
+       n.previous =  this.tail
+       this.tail.next = n
+       this.tail =  this.tail.next
+     }
+     this.count_items+=1
   }
 
   pop() {
-     const val  = this.current_node.value
-     this.current_node = this.current_node.previous
-     this.current_node.next = {}
-     this.count-=1
-     return val
+    const value =  this.tail.value
+    if (this.count_items > 1){ 
+      this.tail.previous.next = null
+      this.tail = this.tail.previous
+    } else {
+      this.head =  null
+      this.tail = null
+    }
+    
+    this.count_items-=1
+    return value
   }
+
 
   shift() {
-    throw new Error('Remove this statement and implement this function');
+    const value  = this.head.value
+    if (this.count_items > 1) {
+      this.head.next.previous = null
+      this.head = this.head.next
+    } else { 
+      this.head = null
+      this.tail = null
+    }
+    this.count_items-=1
+    return value
   }
 
-  unshift() {
-    throw new Error('Remove this statement and implement this function');
+  unshift(val) {
+    const n  =  new Node(null,null,val)
+    if (this.count_items == 0) {
+      this.head= n
+      this.tail = n
+    } else {
+      this.head.previous = n
+      n.next = this.head
+      this.head = n 
+    }
+   
+    this.count_items+=1
+   
   }
-
-  delete(val) {
-        
-  }
-
   count() {
-    return this.count
+    return this.count_items
+  }
+
+  delete(val){
+
+    if (this.count_items > 1){
+      let n = this.head
+      while (n != null) {
+        if (n.value  == val) {
+          if (n.previous!= null) {
+            n.previous.next = n.next
+          }
+          if (n.next != null) {
+            n.next.previous = n.previous
+          }
+
+          if (n== this.tail) {
+            this.tail=n.previous
+          }
+
+          this.count_items -=1
+          return
+        }
+
+        n = n.next
+      }
+    } else {
+      if (this.head.value == val){
+        this.head= null
+        this.tail = null
+        this.count_items -=1
+      }
+    }
   }
 }

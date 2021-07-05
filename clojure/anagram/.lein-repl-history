@@ -1,0 +1,10 @@
+(def s "tan")
+s
+(frequencies "tan")
+(map frequencies ["tan" "stand" "at"])
+(frequencies "ant")
+(= (frequencies "ant") (frequencies "tan")
+)
+(filter #(= (frequencies "ant") %) ["tan" "stand" "at"])
+(filter #(= (frequencies "ant") (frequencies %)) ["tan" "stand" "at"])
+(clojure.string/lower-case "ASADSDS")
