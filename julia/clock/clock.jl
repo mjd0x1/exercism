@@ -1,37 +1,32 @@
 import Dates
-import Base:+, -,show,==,sprint
+import Base:+, -,show
 import Printf: @sprintf
 
 struct Clock
-    h::Int64
-    m::Int64
+    h::Int8
+    m::Int8
+    Clock(h,m) = begin
+        minutes = h * 60 + m
+        if minutes < 0
+            minutes = 24*60 + minutes % (24*60)
+        end
+        new_h  = (minutes ÷ 60) % 24
+        new_m = minutes % 60
+        new(new_h,new_m)
+    end
+  
 end
 
-negativeHours = (x) -> x < 0 ? 24 + x % 24 : x % 24
-
-function factorise(c::Clock)::Clock
-   c.m < 0 ? Clock(negativeHours(c.h),0) - Dates.Minute(abs(c.m)) : Clock(negativeHours(c.h),0) + Dates.Minute(abs(c.m))
-end
-
-function ==(c1::Clock,c2::Clock)::Bool
-    c1.m % 60 + negativeHours(c1.h + c1.m ÷ 60) * 60 == c2.m % 60  + negativeHours(c2.h + c2.m ÷ 60) * 60
-end
-
-function -(c::Clock,d::Dates.Minute)::Clock
-    mins = c.m + c.h * 60 - d.value
-    mins < 0 ? Clock(24,0) - Dates.Minute(abs(mins)) : Clock(mins ÷ 60, mins % 60)
+function -(c::Clock,d::Dates.Minute)
+   +(c,-1 * d)
 end
 
 function +(c::Clock,d::Dates.Minute)::Clock
-    mins = c.m + d.value
-    Clock((c.h + mins ÷ 60)%24, mins % 60)
+    Clock(c.h,c.m+d.value)
 end
 
-sprint(f::Function,c::Clock)  = show(c)
-function show(c::Clock)
-    adjusted  = factorise(c)
-    "\"$(@sprintf("%02d",adjusted.h)):$(@sprintf("%02d",adjusted.m))\""
-end
+
+show(io::IO, c::Clock) = print(io,"\"" * @sprintf("%02d",c.h) * ":"  * @sprintf("%02d",c.m) * "\"")
 
 
 

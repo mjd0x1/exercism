@@ -8,3 +8,18 @@ s
 (filter #(= (frequencies "ant") %) ["tan" "stand" "at"])
 (filter #(= (frequencies "ant") (frequencies %)) ["tan" "stand" "at"])
 (clojure.string/lower-case "ASADSDS")
+(def s "inlets")
+(-> s clojure.string/lower-case sort)
+(def r [coll ["gallery" "ballerina" "regally"
+                     "clergy"  "largely"   "leading"])
+r
+(def r [coll ["gallery" "ballerina" "regally"
+])                    
+(def r ["gallery" "ballerina" "regally"])
+(defn f [x] (-> s clojure.string/lower-case sort)
+)
+(defn f [x] (-> x clojure.string/lower-case sort)
+)
+(f "hello")
+r
+(map f r)

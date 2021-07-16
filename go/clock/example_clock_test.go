@@ -10,6 +10,18 @@ func ExampleClock_new() {
 	// Output: 10:30
 }
 
+func ExampleClock_Add2() {
+	// create a clock
+	clock1 := New(0, 2)
+	clock2 := New(0, 2)
+
+	// add 30 minutes to it
+
+	fmt.Println(clock1 == clock2)
+
+	// Output: true
+}
+
 func ExampleClock_Add() {
 	// create a clock
 	clock := New(10, 30)
