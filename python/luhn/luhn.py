@@ -1,3 +1,4 @@
+######
 class Luhn:
     def __init__(self, card_num):
         digits = [int(i) if ord(i) in range(48, 58) else -1
@@ -12,3 +13,4 @@ class Luhn:
 
     def valid(self):
         return self.validated_number
+
