@@ -6,19 +6,14 @@ struct Clock
     h::Int8
     m::Int8
     Clock(h,m) = begin
-        minutes = h * 60 + m
-        if minutes < 0
-            minutes = 24*60 + minutes % (24*60)
-        end
-        new_h  = (minutes ÷ 60) % 24
-        new_m = minutes % 60
-        new(new_h,new_m)
+        hours  = floor(m/60)
+        new(mod(h + hours,24),mod(m,60))
     end
   
 end
 
 function -(c::Clock,d::Dates.Minute)
-   +(c,-1 * d)
+   +(c,-d)
 end
 
 function +(c::Clock,d::Dates.Minute)::Clock
