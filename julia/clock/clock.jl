@@ -6,8 +6,7 @@ struct Clock
     h::Int8
     m::Int8
     Clock(h,m) = begin
-        hours  = floor(m/60)
-        new(mod(h + hours,24),mod(m,60))
+        new(mod(h + fld(m,s60),24),mod(m,60))
     end
   
 end
