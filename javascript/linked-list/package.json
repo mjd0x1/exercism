@@ -32,5 +32,7 @@
     "lint": "eslint ."
   },
   "license": "MIT",
-  "dependencies": {}
+  "dependencies": {
+    "babel-plugin-transform-bigint": "^1.0.12"
+  }
 }

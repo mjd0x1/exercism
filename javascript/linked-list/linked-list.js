@@ -1,109 +1,236 @@
+export const LINKED_LIST_HEAD = 0
+export const LINKED_LIST_TAIL = 1
+export const LINKED_LIST_BY_INDEX = 2
 
 class Node {
-
-  constructor(p,n,v){
-    this.previous = p
-    this.next = n
-    this.value = v
+  constructor(value) {
+    this.previous = null
+    this.next = null
+    this.value = value
   }
 }
 
- export class LinkedList {
+export class LinkedList {
+  constructor() {
+    const start_node = new Node(null)
+    const end_node = new Node(null)
+    this._start_node = start_node
+    this._end_node = end_node
+    this._start_node.next = end_node
+    this._end_node.previous = start_node
 
-  constructor(){
-    this.head =  null
+    this.head = null
     this.tail = null
-    this.count_items= 0
-  }
-  
-  push(val) {
-     const n  =  new Node(null,null,val)
-     if (this.count_items == 0) {
-       this.head= n
-       this.tail = n
-     } else {
-       n.previous =  this.tail
-       this.tail.next = n
-       this.tail =  this.tail.next
-     }
-     this.count_items+=1
+    this.count_items = 0
   }
 
-  pop() {
-    const value =  this.tail.value
-    if (this.count_items > 1){ 
-      this.tail.previous.next = null
-      this.tail = this.tail.previous
-    } else {
-      this.head =  null
-      this.tail = null
-    }
-    
-    this.count_items-=1
+  is_empty = () => this.count_items == 0
+
+  push = (value) => {
+    this.insert_node_between(value, this._end_node.previous, this._end_node)
+  }
+
+  pop = () => {
+    const value = this.tail.value
+    this.remove_node(this.tail)
     return value
   }
 
-
-  shift() {
-    const value  = this.head.value
-    if (this.count_items > 1) {
-      this.head.next.previous = null
-      this.head = this.head.next
-    } else { 
-      this.head = null
-      this.tail = null
-    }
-    this.count_items-=1
+  shift = () => {
+    const value = this.head.value
+    this.remove_node(this.head)
     return value
   }
 
-  unshift(val) {
-    const n  =  new Node(null,null,val)
-    if (this.count_items == 0) {
-      this.head= n
-      this.tail = n
-    } else {
-      this.head.previous = n
-      n.next = this.head
-      this.head = n 
+  unshift = (value) => {
+    this.insert_node_between(value, this._start_node, this._start_node.next)
+  }
+
+  delete = (value) => {
+    const node = this.find_value(value)
+    if (node != null) {
+      this.remove_node(node)
     }
-   
-    this.count_items+=1
-   
-  }
-  count() {
-    return this.count_items
   }
 
-  delete(val){
+  remove_node = (node) => {
+    if (!this.is_empty()) {
+      node.previous.next = node.next
+      node.next.previous = node.previous
+      this.update_head_tail()
+      this.count_items -= 1
+    }
+  }
 
-    if (this.count_items > 1){
-      let n = this.head
-      while (n != null) {
-        if (n.value  == val) {
-          if (n.previous!= null) {
-            n.previous.next = n.next
-          }
-          if (n.next != null) {
-            n.next.previous = n.previous
-          }
+  count = () => this.count_items
 
-          if (n== this.tail) {
-            this.tail=n.previous
-          }
+  insert_node_between(value, node_pre, node_post) {
+    const node = new Node(value)
+    node.previous = node_pre
+    node.next = node_post
+    node_pre.next = node
+    node_post.previous = node
+    this.update_head_tail()
+    this.count_items += 1
+  }
 
-          this.count_items -=1
-          return
-        }
+  get_values = () => {
+    let node = this.head
+    const values = []
+    while (node.value != null) {
+      values.push(node.value)
+      node = node.next
+    }
+    return values
+  }
 
-        n = n.next
+  find_value = (value) => {
+    let node = this.head
+
+    while (node != null) {
+      if (node.value == value) {
+        return node
       }
+      node = node.next
+    }
+  }
+
+  update_head_tail = () => {
+    this.head = this._start_node.next
+    this.tail = this._end_node.previous
+  }
+}
+
+export class LinkedList2 {
+  constructor() {
+    this.head = null
+    this.tail = null
+    this.count_items = 0
+  }
+
+  is_empty = () => this.count_items == 0
+
+  initialise_head_tail = (node) => {
+    this.head = node
+    this.tail = node
+  }
+
+  pop = () => {
+    const value = this.tail.value
+    this.remove_node(this.tail)
+    return value
+  }
+
+  shift = () => {
+    const value = this.head.value
+    this.remove_node(this.head)
+    return value
+  }
+
+  delete = (value) => {
+    const node = this.find_value(value)
+    if (node != null) {
+      this.remove_node(node)
+    }
+  }
+
+  unshift = (value) => {
+    this.insert_node(value, LINKED_LIST_HEAD)
+  }
+
+  push = (value) => {
+    this.insert_node(value, LINKED_LIST_TAIL)
+  }
+
+  count = () => this.count_items
+
+  find_value = (value) => {
+    let node = this.head
+
+    while (node != null) {
+      if (node.value == value) {
+        return node
+      }
+      node = node.next
+    }
+  }
+
+  find_node_at = (idx) => {
+    let node = this.head
+    let count = 0
+    while (node != null) {
+      if (count == idx) {
+        return node
+      }
+      node = node.next
+      count += 1
+    }
+    return null
+  }
+
+  get_values = () => {
+    let node = this.head
+    const values = []
+    while (node != null) {
+      values.push(node.value)
+      node = node.next
+    }
+    return values
+  }
+
+  insert_node = (value, insert_id, idx = undefined) => {
+    const node = new Node(value)
+
+    let use_id = insert_id
+    if (insert_id == LINKED_LIST_BY_INDEX && idx == 0) {
+      use_id = LINKED_LIST_HEAD
+    }
+
+    if (this.is_empty()) {
+      this.initialise_head_tail(node)
     } else {
-      if (this.head.value == val){
-        this.head= null
-        this.tail = null
-        this.count_items -=1
+      switch (use_id) {
+        case LINKED_LIST_TAIL:
+          node.previous = this.tail
+          this.tail.next = node
+          this.tail = node
+          break
+        case LINKED_LIST_HEAD:
+          node.next = this.head
+          this.head.previous = node
+          this.head = node
+          break
+        case LINKED_LIST_BY_INDEX:
+          const node_after = this.find_node_at(idx)
+          if (node_after != null) {
+            const node_before = node_after.previous
+            node.next = node_after
+            node_before.next = node
+            node_after.previous = node
+          }
+        default:
       }
+    }
+
+    this.count_items += 1
+  }
+
+  remove_node = (node) => {
+    if (!this.is_empty()) {
+      if (node.previous != null) {
+        node.previous.next = node.next
+      }
+      if (node.next != null) {
+        node.next.previous = node.previous
+      }
+      if (node == this.tail) {
+        this.tail = node.previous
+      }
+      if (node == this.head) {
+        this.head = node.next
+      }
+
+      this.count_items -= 1
     }
   }
 }
