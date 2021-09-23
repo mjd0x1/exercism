@@ -1,8 +1,11 @@
+const RNA_DATA = Dict('C' => 'G', 'G' => 'C', 'T' => 'A', 'A' => 'U')
+
 function to_rna(dna)
-    d = Dict('C' => 'G' , 'G' => 'C' , 'T' => 'A', 'A' => 'U')
-    if map(x-> x ∉ keys(d), [dna...]) |> any
+   
+    if map(x -> x ∉ keys(RNA_DATA), collect(dna)) |> any
         throw(ErrorException("Invalid nucleotide"))
     end
-    map(x-> d[x], dna)
+    map(x -> RNA_DATA[x], dna)
+
 end
 

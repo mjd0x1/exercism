@@ -1,0 +1,1 @@
+acronym(phrase)   =  (m.match[1] for m in eachmatch(r"[A-Za-z']+", phrase)) |> join |> uppercase
