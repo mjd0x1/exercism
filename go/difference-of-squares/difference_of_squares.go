@@ -2,6 +2,23 @@ package diffsquares
 
 import "math"
 
+func SumOfSquares(number int) int {
+
+	return int(number * (number + 1) * (2*number + 1) / 6)
+
+}
+
+func SquareOfSum(number int) int {
+
+	x := float64(number)
+	return int(math.Pow(x*(x+1), 2) / 4)
+}
+
+func Difference(number int) int {
+	return SquareOfSum(number) - SumOfSquares(number)
+}
+
+/*
 func Sum(n int, f func(int) int) int {
 
 	sum := 0
@@ -28,3 +45,4 @@ func SquareOfSum(number int) int {
 func Difference(number int) int {
 	return SquareOfSum(number) - SumOfSquares(number)
 }
+*/
