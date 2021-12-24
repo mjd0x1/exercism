@@ -4,24 +4,20 @@ function spiral_matrix(n)
     px, py = 1, 1
     spiral = zeros((n, n))
 
-    N = sequence_turns(n)
-    ct = 1
-    k = n
+    ct, value, comparison_value = 1, 2n, n
+
     for i = 1:n^2
-        k -= (mod(i, 2) == 0)
-        if ct == k
+        if ct == comparison_value
             dx, dy  = dy, -dx
-            popfirst!(N)
-            ct = 0
+            ct, comparison_value = 0, fld(value -= 1, 2)
         end
         ct += 1
-        
         spiral[px,py] = i 
         px, py = px + dx, py + dy
     end
     spiral
 end
-
+# 663.695 ns (1 allocation: 3.25 KiB)
 
 # 6# 5,5,5,4,4,3,3,2,2,1
 #  # 1,6,11,16,20,24,27...

@@ -44,13 +44,19 @@ class ComplexNumbersTest(unittest.TestCase):
     # Addition
 
     def test_add_purely_real_numbers(self):
-        self.assertEqual(ComplexNumber(1, 0) + ComplexNumber(2, 0), ComplexNumber(3, 0))
+        self.assertEqual(
+            ComplexNumber(1, 0) + ComplexNumber(2, 0), ComplexNumber(3, 0)
+        )
 
     def test_add_purely_imaginary_numbers(self):
-        self.assertEqual(ComplexNumber(0, 1) + ComplexNumber(0, 2), ComplexNumber(0, 3))
+        self.assertEqual(
+            ComplexNumber(0, 1) + ComplexNumber(0, 2), ComplexNumber(0, 3)
+        )
 
     def test_add_numbers_with_real_and_imaginary_part(self):
-        self.assertEqual(ComplexNumber(1, 2) + ComplexNumber(3, 4), ComplexNumber(4, 6))
+        self.assertEqual(
+            ComplexNumber(1, 2) + ComplexNumber(3, 4), ComplexNumber(4, 6)
+        )
 
     # Subtraction
 
@@ -72,7 +78,9 @@ class ComplexNumbersTest(unittest.TestCase):
     # Multiplication
 
     def test_multiply_purely_real_numbers(self):
-        self.assertEqual(ComplexNumber(1, 0) * ComplexNumber(2, 0), ComplexNumber(2, 0))
+        self.assertEqual(
+            ComplexNumber(1, 0) * ComplexNumber(2, 0), ComplexNumber(2, 0)
+        )
 
     def test_multiply_purely_imaginary_numbers(self):
         self.assertEqual(
@@ -136,13 +144,17 @@ class ComplexNumbersTest(unittest.TestCase):
     # Complex exponential function
 
     def test_euler_s_identity_formula(self):
-        self.assertAlmostEqual(ComplexNumber(0, math.pi).exp(), ComplexNumber(-1, 0))
+        self.assertAlmostEqual(
+            ComplexNumber(0, math.pi).exp(), ComplexNumber(-1, 0)
+        )
 
     def test_exponential_of_0(self):
         self.assertAlmostEqual(ComplexNumber(0, 0).exp(), ComplexNumber(1, 0))
 
     def test_exponential_of_a_purely_real_number(self):
-        self.assertAlmostEqual(ComplexNumber(1, 0).exp(), ComplexNumber(math.e, 0))
+        self.assertAlmostEqual(
+            ComplexNumber(1, 0).exp(), ComplexNumber(math.e, 0)
+        )
 
     def test_exponential_of_a_number_with_real_and_imaginary_part(self):
         self.assertAlmostEqual(
@@ -159,6 +171,13 @@ class ComplexNumbersTest(unittest.TestCase):
 
     def test_inequality_of_imaginary_part(self):
         self.assertNotEqual(ComplexNumber(1, 2), ComplexNumber(1, 1))
+
+    # test commutative
+    def test_rea_of_complex_numbers(self):
+        self.assertEqual(3 * ComplexNumber(1, 2), ComplexNumber(3, 6))
+
+    def test_real2_of_complex_numbers(self):
+        self.assertEqual(3 + ComplexNumber(1, 2), ComplexNumber(4, 2))
 
 
 if __name__ == "__main__":

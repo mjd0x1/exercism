@@ -1,0 +1,89 @@
+(conj [] 2)
+(conj (conj [] 2) 3)
+(def t  [1,2,3,4])
+(def (x:xs [1,2,3,4])
+x
+(def (x:xs) [1,2,3,4])
+(def X :as(x:xs) [1,2,3,4])
+(def X :as [x:xs] [1,2,3,4])
+(def [x:xs] [1,2,3,4])
+(ns accumulate)
+(defn accumulate [f coll]
+  (loop [output [] [x:xs] coll]
+    (if (= xs null)
+      output
+      (recur (conj output (f x) xs)))))
+(ns accumulate)
+(defn accumulate [f coll]
+  (loop [output [] [x & xs] coll]
+    (if (= xs null)
+      output
+      (recur (conj output (f x) xs)))))
+(let [x & xs] [1,2,3]
+(let [[x & xs] [1,2,3]]
+     x)
+(let [[x & xs] [1]]
+    xs)
+(ns accumulate)
+(defn accumulate [f coll]
+  (loop [output [] [x & xs] coll]
+    (if (= xs nil)
+      output
+      (recur (conj output (f x) xs)))))
+(ns accumulate)
+(defn accumulate [f coll]
+  (loop [output [] [x & xs] coll]
+    (if (= xs nil)
+      output
+      (recur (conj output (f x)) xs))))
+accumulate(#(+ % 1) [1,2,3,4])
+(defn add[x] (+ x 1))
+(add 2)
+accumulate(add [2,3,4])
+(conj [] (add 1))
+(ns accumulate)
+(defn accumulate [f coll]
+  (loop [output [] [x & xs] coll]
+    (if (= xs nil)
+      output
+      (do 
+            (println output)
+            (recur (conj output (f x)) xs)))))
+(accumulate add [1,2,3,4])
+(ns accumulate)
+(defn accumulate [f coll]
+  (loop [output [] [x & xs] coll]
+    (if (= x nil)
+      output
+      (do 
+            (println output)
+            (recur (conj output (f x)) xs)))))
+(accumulate add [1,2,3,4])
+(ns accumulate)
+(defn accumulate [f coll]
+  (loop [output [] [x & xs] coll]
+    (if (= x nil)
+      output
+      (recur (conj output (f x)) xs))))
+(accumulate add [1,2,3,4])
+(accumulate #(* % %) [1,2,3,4])
+accumulate(#(+ % 1) [1,2,3,4])
+(ns accumulate)
+(defn accumulate [f coll]
+  (loop [output [] [x & xs] coll]
+    (if (= xs nil)
+      output
+      (recur (conj output (f x)) xs))))
+accumulate(#(+ % 1) [1,2,3,4])
+(ns accumulate)
+(defn accumulate [f coll]
+  (loop [output [] [x & xs] coll]
+    (if (= x nil)
+      output
+      (recur (conj output (f x)) xs))))
+accumulate(#(+ % 1) [1,2,3,4])
+(defn add[x] (+ x 1))
+accumulate(add [1,2,3,4])
+(add 2)
+(accumulate add [1,2,3,4])
+(accumulate #(+ % 1) [1,2,3,4])

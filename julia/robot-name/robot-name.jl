@@ -1,39 +1,26 @@
 using Random
 
+function generate_list()
+    lst = []
+    for x in 'A':'Z' , y in 'A':'Z', z in 0:9, u in 0:9, v in 0:9
+        push!(lst, string(x, y, z, u, v))
+    end
+    shuffle!(lst)
+end
+
+const robot_names  = generate_list()
+
+
 mutable struct Robot
     name::String
-    valid_names::Array{String,1}
-    myrand::Int
-    Robot() = begin
-        r =  new()
-        r.valid_names = build_robot_names()
-        id  = rand(1:length(r.valid_names))
-        r.name = r.valid_names[id] #pop!(r.valid_names)
-        deleteat!(r.valid_names,id)
-        r
-    end
+    Robot() = !isempty(robot_names) ? new(pop!(robot_names)) : throw(error("")) 
+end
+# 92.004 ns (3 allocations: 55 bytes)
     
-end
 
-function build_robot_names()
-    names = Set()
-    Random.seed!()
-    for i=1:1000
-        push!(names,new_name())
-    end
-    collect(names)
+function reset!(r::Robot)
+    r.name  = (Robot()).name
 end
+    
+name(r::Robot) =  r.name
 
-function new_name()
-    rand('A':'Z') * rand('A':'Z') * string(rand(0:9)) * string(rand(0:9)) * string(rand(0:9))
-end
-
-function reset!(instance::Robot)
-    id  = rand(1:length(instance.valid_names))
-    instance.name = instance.valid_names[id] #pop!(instance.valid_names)
-    deleteat!(instance.valid_names,id)
-end
-
-function name(instance::Robot)
-    instance.name
-end

@@ -4,7 +4,7 @@ function matching_brackets(s)
     brackets_only  = [x.match for x in eachmatch(r"\(|\[|\)|\]|\{|\}", s)]
     push!(stack, brackets_only[1])
     for x in brackets_only[2:end]
-        if (length(stack) > 0 &&  x == ")" && stack[end] == "(")  ||  (length(stack) > 0  && x == "]" && stack[end] == "[") || (length(stack) > 0  && x == "}" && stack[end] == "{")
+        if length(stack) > 0  && stack[end] * x ∈ ["()","[]", "{}"]
             pop!(stack)
         else
             push!(stack, x)

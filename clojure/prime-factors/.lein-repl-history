@@ -1,0 +1,49 @@
+(mod 27 2)
+(mod 27 3)
+(quot 27 3)
+(quot 9 3)
+(quot 3 3)
+(ns prime-factors)
+(defn of [n]
+  (loop [output [] N n divisor 2] 
+    (if (= n 1)
+      output
+      (if (= (mod N divisor) 0)
+            (recur (conj output ) (quot N divisor) divisor)
+            (recur output N (inc divisor))))))
+(of 27)
+(ns prime-factors)
+(defn of [n]
+  (loop [output [] N n divisor 2] 
+    (if (= n 1)
+      output
+      (if (= (mod N divisor) 0)
+            (recur (conj output divisor) (quot N divisor) divisor)
+            (recur output N (inc divisor))))))
+ (ns prime-factors)
+(defn of [n]
+  (loop [output [] N n divisor 2] 
+    (if (or (= n 1) (= divisor 4))
+      output
+      (if (= (mod N divisor) 0)
+            (recur (conj output divisor) (quot N divisor) divisor)
+            (recur output N (inc divisor))))))
+ (of 27)
+(ns prime-factors)
+(defn of [n]
+  (loop [output [] N n divisor 2] 
+    (if (or (= n 1) (= divisor 4))
+      [output n]
+      (if (= (mod N divisor) 0)
+            (recur (conj output divisor) (quot N divisor) divisor)
+            (recur output N (inc divisor))))))
+ (of 27)
+(ns prime-factors)
+(defn of [n]
+  (loop [output [] N n divisor 2] 
+    (if (= N 1) 
+      output
+      (if (= (mod N divisor) 0)
+            (recur (conj output divisor) (quot N divisor) divisor)
+            (recur output N (inc divisor))))))
+ (of 27)

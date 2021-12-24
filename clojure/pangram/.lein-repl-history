@@ -1,0 +1,19 @@
+set(""a quick movement of the enemy will jeopardize five gunboats")
+set("a quick movement of the enemy will jeopardize five gunboats")
+seq("a quick movement of the enemy will jeopardize five gunboats")
+(seq "a quick movement of the enemy will jeopardize five gunboats")
+(set "a quick movement of the enemy will jeopardize five gunboats")
+(range 'a' 'z')
+(map char (range 97 123))
+(def b (set (map char (range 97 123)))
+(def b (set (map char (range 97 123))))
+b
+a
+(def a (set "a quick movement of the enemy will jeopardize five gunboats"))
+a
+(clojure.set/intersection a b)
+(clojure.set/difference a b)
+(clojure.set/difference b a)
+a
+b
+(count (clojure.set/difference b a))

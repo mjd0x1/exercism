@@ -1,0 +1,93 @@
+(mod 10 3)
+(div 10 3)
+(quot 10 3)
+(def n 15)
+(mod n 3)
+(ns raindrops)
+  (require [clojure.string :as str]))
+(defn convert [n] 
+  (let [output
+   [(if (= (mod n 3) 0) "Pling" "")
+    (if (= (mod n 5) 0) "Plang" "")
+    (if (= (mod n 7) 0) "Plong" "")]]
+    (if (= (count output) 0) n str/join(output))))
+(ns raindrops)
+  (require [clojure.string :as str]))
+(defn convert [n] 
+  (let [output
+   [(if (= (mod n 3) 0) "Pling" "")
+    (if (= (mod n 5) 0) "Plang" "")
+    (if (= (mod n 7) 0) "Plong" "")]]
+    (if (= (count output) 0) n (str/join output))))
+(ns raindrops
+  (require [clojure.string :as str]))
+(defn convert [n] 
+  (let [output
+   [(if (= (mod n 3) 0) "Pling" "")
+    (if (= (mod n 5) 0) "Plang" "")
+    (if (= (mod n 7) 0) "Plong" "")]]
+    (if (= (count output) 0) n (str/join output))))
+(ns raindrops
+  (require [clojure.string :as str]))
+(defn convert [n] 
+  (let [output
+   [(if (= (mod n 3) 0) "Pling" "")
+    (if (= (mod n 5) 0) "Plang" "")
+    (if (= (mod n 7) 0) "Plong" "")]]
+    (if (= (count output) 0) n (str/join output))))
+(ns raindrops
+  (require: [clojure.string :as str]))
+(defn convert [n] 
+  (let [output
+   [(if (= (mod n 3) 0) "Pling" "")
+    (if (= (mod n 5) 0) "Plang" "")
+    (if (= (mod n 7) 0) "Plong" "")]]
+    (if (= (count output) 0) n (str/join output))))
+(ns raindrops
+  (require: [clojure.string :as str]))
+(defn convert [n] 
+  (let [output
+   [(if (= (mod n 3) 0) "Pling" "")
+    (if (= (mod n 5) 0) "Plang" "")
+    (if (= (mod n 7) 0) "Plong" "")]]
+    (if (= (count output) 0) n (str/join output))))
+(ns raindrops
+  (:require [clojure.string :as str]))
+(defn convert [n] 
+  (let [output
+   [(if (= (mod n 3) 0) "Pling" "")
+    (if (= (mod n 5) 0) "Plang" "")
+    (if (= (mod n 7) 0) "Plong" "")]]
+    (if (= (count output) 0) n (str/join output))))
+(convert 15)
+(mod 12121 3)
+(mod 12121 5)
+(mod 12121 6)
+(mod 12121 7)
+(ns raindrops
+  (:require [clojure.string :as str]))
+(defn convert [n] 
+  (let [output
+   [(if (= (mod n 3) 0) "Pling" ""),
+    (if (= (mod n 5) 0) "Plang" ""),
+    (if (= (mod n 7) 0) "Plong" "")]]
+    (if (= (count output) 0) (str n) (str/join output))))
+(convert 12121)
+(def data {3 "Pling", 4 "Plang", 5 "Plong"})
+data
+(map data)
+(map data
+0
+(map data)
+data
+(map (fn [k v] (if (= (mod 15 k) 0) v "")) data)
+(map (fn [k] (if (= (mod 15 k) 0) (data k) "")) data)
+(data 3)
+(3 data)
+(map (fn [k] (if (= (mod 15 k) 0) (data k) "")) data)
+(map data)
+(map first  data)
+(map #(first %) data)
+(map (fn [k] (if (= (mod 15 k) 0) (data k) "")) data)
+(map #(if (= (mod 15 (first %)) 0) (last  %) "")) data)
+(map #(if (= (mod 15 (first %)) 0) (last  %) "") data)

@@ -1,0 +1,334 @@
+(def s [1 [2 [[3]] [4 [[5]]] 6 7] 8])
+s
+(first s)
+(count (first s))
+ (first s)
+(list?  (first s))
+(list?  (1 s))
+(list?  (s 1))
+(s 1)
+(list? (s 1))
+(seq? (s 1))
+(vector? (s 1))
+(vector? 1)
+(def s  [0 2 [[2 3] 8 [[100]] nil [[nil]]] -2])
+(str s)
+(re-seq #"\d" (str s))
+(re-seq #"\d | nil" (str s))
+(re-seq #"\d\d" (str s))
+(re-seq #"\d\d\d" (str s))
+(re-seq #"\d\d\d | \d" (str s))
+(re-seq #"\d\d\d | \d | \dd" (str s))
+(re-seq #"\d\d\d | \d | \d\d" (str s))
+(re-seq #"\d\d\d|\d " (str s))
+s
+(re-seq #"\d" (str s))
+(re-seq #"\d\d\d|nil " (str s))
+(re-seq #"\d\d\d" (str s))
+(re-seq #"\d" (str s))
+(re-seq #"\d\d" (str s))
+(re-seq #"\d\d\d" (str s))
+(re-seq #"\d\d\d|\d" (str s))
+(re-seq #"\d\d\d|\d|\d\d" (str s))
+(re-seq #"-*\d\d\d|\d|\d\d" (str s))
+(re-seq #"-+\d\d\d|\d|\d\d" (str s))
+(re-seq #"(-*)\d\d\d|\d|\d\d" (str s))
+(re-seq #"-\d\d\d|\d|\d\d" (str s))
+(re-seq #"-*\d\d\d|-*\d|-*\d\d" (str s))
+(float "23")
+(int "23")
+(Int  "23")
+(Integer/parseInt "2323")
+(map Integer/parseInt (re-seq #"-*\d\d\d|-*\d|-*\d\d" (str s)))
+(map Integer/parseInt (re-seq #"-*\d\d\d|-*\d|-*\d\d" (str s))))
+(map Integer/parseInt (re-seq #"-*\d\d\d|-*\d|-*\d\d" (str s)))
+(Integer/parseInt "3")
+(map #(Integer/parseInt %) (re-seq #"-*\d\d\d|-*\d|-*\d\d" (str s))))
+(map #(Integer/parseInt %) (re-seq #"-*\d\d\d|-*\d|-*\d\d" (str s)))
+(= [0 2 2 3 8 100 -2] (map #(Integer/parseInt %) (re-seq #"-*\d\d\d|-*\d|-*\d\d" (str s))))
+(ns flatten-array)
+(defn flatten [arr] 
+    (map #(Integer/parseInt %) (re-seq #"-*\d\d\d|-*\d|-*\d\d" (str arr))))
+(flatten [0 2 [[2 3] 8 100 4 [[[50]]]] -2])
+(flatten [[100]])
+(flatten [[50]])
+defn flatten [arr] 
+    (map #(Integer/parseInt %) (re-seq #"-*\d\d\d|-*\d\d|-*\d" (str arr))))
+(ns flatten-array)
+(defn flatten [arr] 
+    (map #(Integer/parseInt %) (re-seq #"-*\d\d\d|-*\d\d|-*\d" (str arr))))
+(def s [0 2 [[2 3] 8 100 4 [[[50]]]] -2])
+(str s)
+(clojure/string/split #"[" (str s))
+(clojure.string/split #"[" (str s)
+(clojure.string/split #"[" (str s))
+(clojure.string/split (srt s) #"[")
+(clojure.string/split (srt s) #"["))
+(clojure.string/split (str s) #"[")
+(clojure.string/split (str s) #"["))
+(clojure.string/split (str s) #"[")
+(clojure.string/split "2,2,2,2" #",")
+(clojure.string/split (str s) #"[")
+(clojure.string/split (str s) #",")
+(clojure.string/split (str s) #"[")
+(clojure.string/split (str s) #"\[")
+s
+(re-seq #"\w" (str s))
+(re-seq #"\w*" (str s))
+(re-seq #"-*\w*" (str s))
+(def s ["a","b",["c"],[["d","e"]]]_
+)
+(def s ["a","b",["c"],[["d","e"]]])
+s
+(re-seq #"-*\w*" (str s))
+(filter #(not= % "") re-seq #"-*\w*" (str s)))
+(filter #(not= % "") (re-seq #"-*\w*" (str s)))
+(contains 2 [2,3])
+(contains [2,3] 2)
+(contains? [2,3] 2)
+(!contains? [2,3] 2)
+(not contains? [2,3] 2)
+(contains? [2,3] 2)
+(contains? 2 [2,3])
+(contains? [2,3] 3)
+(some? [2,3] 3)
+(some? 3 [2,3] )
+(re-seq #"-*\w*" (str arr)
+)
+(def arr [0 2 [[2 3] 8 [[100]] nil [[nil]]] -2])
+(re-seq #"-*\w*" (str arr)
+(re-seq #"-*\w*" (str arr))
+)
+(re-seq #"-*\w*" (str arr))
+(-> (re-seq #"-*\w*" (str arr)) (filter #(not= ""))
+)
+(-> (re-seq #"-*\w*" (str arr)) (filter #(not= "")))
+(--> (re-seq #"-*\w*" (str arr)) (filter #(not= "")))
+(->> (re-seq #"-*\w*" (str arr)) (filter #(not= "")))
+(->> (re-seq #"-*\w*" (str arr)) (filter #(not= "" %)))
+(->> (re-seq #"-*\w*" (str arr)) (filter #(not= (or (= "" %) =(= "nil" %))))
+)
+(->> (re-seq #"-*\w*" (str arr)) (filter #(not= (or (= "" %) =(= "nil" %)))))
+(->> (re-seq #"-*\w*" (str arr)) (filter #(not= (or (= "" %) (= "nil" %)))))
+(->> (re-seq #"-*\w*" (str arr)) (filter #(and (not= "" %) (not= "nil" %)))))
+(->> (re-seq #"-*\w*" (str arr)) (filter #(and (not= "" %) (not= "nil" %))))
+(->> (re-seq #"-*\w*" (str arr)) (filter #(and (not= "" %) (not= "nil" %))) (map #(if (number? %) (Float/parseFloat %) %)))
+(def arr [3,"a","cvcv",-2,[[3,3,"m"]]])
+(->> (re-seq #"-*\w*" (str arr)) (filter #(and (not= "" %) (not= "nil" %))) (map #(if (number? %) (Float/parseFloat %) %)))
+(def arr [3,"a","cvcv",-2,[[3.32234,3,"m"]]])
+(->> (re-seq #"-*\w*" (str arr)) (filter #(and (not= "" %) (not= "nil" %))) (map #(if (number? %) (Float/parseFloat %) %)))
+(->> (re-seq #"-*\w*.*\w*" (str arr)) (filter #(and (not= "" %) (not= "nil" %))) (map #(if (number? %) (Float/parseFloat %) %)))
+(->> (re-seq #"-*\w*\.*\w*" (str arr)) (filter #(and (not= "" %) (not= "nil" %))) (map #(if (number? %) (Float/parseFloat %) %)))
+(def arr ["a",3.3434,3,[[3,3]]])
+ (->> (str arr)
+       (re-seq #"-*\w*\.*\w*"))
+(->> (str arr)
+       (re-seq #"-*\w*\.*\w*") 
+       (filter #(and (not= "" %) (not= "nil" %))) 
+)
+(->> (str arr)
+       (re-seq #"-*\w*\.*\w*") 
+       (filter #(and (not= "" %) (not= "nil" %))) 
+       (map #(if (number? %) (Float/parseFloat %) %))))
+(defn flatten [arr] 
+  (->> (str arr)
+       (re-seq #"-*\w*\.*\w*") 
+       (filter #(and (not= "" %) (not= "nil" %))) 
+       (map #(if (number? %) (Float/parseFloat %) %))))
+(flatten arr)
+(->> (str arr)
+       (re-seq #"-*\w*\.*\w*") 
+       (filter #(and (not= "" %) (not= "nil" %))))
+(->> (str arr)
+       (re-seq #"-*\w*\.*\w*") 
+       (filter #(and (not= "" %) (not= "nil" %))) 
+       (map #(if (number? %) (Float/parseFloat %) %)))
+(number? "3")
+(Float/parseFloat "a")
+(read-string "3.2434")
+(read-string "a")
+(ns flatten-array)
+(defn flatten [arr] 
+  (->> (str arr)
+       (re-seq #"-*\w*\.*\w*") 
+       (filter #(and (not= "" %) (not= "nil" %))) 
+       (map read-string)))
+(flatten arr)
+arr
+(def arr ["a",3.3434,3,[[3,3]]])
+(flatten arr)
+(ns flatten-array)
+(defn flatten [arr] 
+  (->> (str arr)
+       (re-seq #"-*\w*\.*\w*") 
+       (filter #(and (not= "" %) (not= "nil" %))) 
+       (map read-string)))
+(def a ["a","b",3,[[3232.323]]])
+(flatten a)
+(def a ["aassa","bassasa",3,[[3232.323]]])
+(flatten a)
+(ns flatten-array)
+(defn flatten [arr] 
+  (->> (str arr)
+       (re-seq #"-*\w*\.*\w*") 
+       (filter #(and (not= "" %) (not= "nil" %))) 
+       (map #(if (number? (read-string %)) (read-string %) %))))
+(flatten arr)
+lein repl
+(def a ["aassa","bassasa",3,[[3232.323]]])
+a
+(ns flatten-array)
+(defn flatten [arr] 
+  (->> (str arr)
+       (re-seq #"-*\w*\.*\w*") 
+       (filter #(and (not= "" %) (not= "nil" %))) 
+       (map #(if (number? (read-string %)) (read-string %) %))))
+(flatten a)
+(flatten ["2","2",123123,2.232,[[2,3,"bfv"]],["sdasdsadas"]])
+(defn flatten [arr] 
+  (loop [[x & xs] arr output []]
+    (if nil? x)
+      output
+      (recur xs (conj output "3"))))
+(flatten [1,2,3,[3,[3,4]]])
+(defn flatten [arr] 
+  (loop [[x & xs] arr output []]
+    (if nil? x)
+      output
+      (recur xs (conj output "3"))))
+(flatten [1,2,3,4,4])
+(defn flatten [arr] 
+  (loop [[x & xs] arr output []]
+    (if nil? x)
+      output
+      (recur xs (conj output x))))
+(flatten [2,3,4,5,6])
+(defn flatten3 [arr] 
+  (loop [[x & xs] arr output 0]
+    (if nil? x)
+      output
+      (recur xs (inc output))))
+(flatten3 [2,3,4,5])
+(nil? 3)
+(nil? [])
+(cons 2 [])
+(nil? ())
+(defn flatten3 [arr] 
+  (loop [[x & xs] arr output 0]
+    (if (or (nil? x) (= output 3))
+      output
+      (do
+        (println output)
+        (recur xs (inc output))
+        ))))
+(flatten3 [1,2,3,4])
+(defn flatten3 [arr] 
+  (loop [[x & xs] arr output 0]
+    (if (or (nil? x) (= output 6))
+      output
+      (do
+        (println output)
+        (recur xs (inc output))
+        ))))
+      
+        
+(flatten3 [1,2,3,4])
+(flatten3 [1,2,3])
+(defn flatten3 [arr] 
+  (loop [[x & xs] arr output 0]
+    (if (nil? x)
+      output
+      (do
+        (println output)
+        (recur xs (inc output))
+        ))))
+      
+(flatten [2,3,3,4])
+(defn flatten3 [arr] 
+  (loop [[x & xs] arr output 0]
+    (if (nil? x)
+      output
+      
+(flatten3 [2,3,4,5])
+(defn flatten3 [arr] 
+  (loop [[x & xs] arr output 0]
+    (if (nil? x)
+      output
+      (recur xs (inc output)))))
+(flatten3 [1,2,3[)
+(flatten3 [1,2,3])
+(flatten3 [1,2,3,4,5])
+(defn flatten3 [arr] 
+  (loop [[x & xs] arr output []]
+    (if (nil? x)
+      output
+      (recur xs (conj x output)))))
+      
+(flatten3 [1,2,3,4,5])
+(conj [] 2)
+(defn flatten3 [arr] 
+  (loop [[x & xs] arr output []]
+    (if (nil? x)
+      output
+      (recur xs (conj output x)))))
+      
+        
+(flatten3 [1,2,3,4,5])
+(vector? 2)
+(vector? [2,3,4])
+(defn flatten3 [arr] 
+  (loop [[x & xs] arr output []]
+    (if (nil? x)
+      output
+      (if (vector? x)
+        (let [v (flatten3 x)]
+          (recur xs (conj output v)))))))
+(flatten3 [2,3,4,5])
+(flatten3 [2,3,[4],5])
+(defn flatten3 [arr] 
+  (loop [[x & xs] arr output []]
+    (if (nil? x)
+      output
+      (recur xs (if (vector? x) 
+                  (let [v (flatten3 x)]
+                    (conj output v)) 
+                  x))))))
+(defn flatten3 [arr] 
+  (loop [[x & xs] arr output []]
+    (if (nil? x)
+      output
+      (recur xs (if (vector? x) 
+                  (let [v (flatten3 x)]
+                    (conj output v)) 
+                  x)))))
+(flatten3 [2,3,[4],5])
+(flatten3 [2,3,4,5])
+(flatten3 [2,3,4,[3,35]])
+(defn flatten3 [arr] 
+  (loop [[x & xs] arr output []]
+    (if (nil? x)
+      output
+      (recur xs (if (vector? x) 
+                  (let [v (flatten3 x)]
+                    (conj output v)) 
+                  (conj output x))))))
+(flatten3 [2,3,4,[3,35]])
+(conj [2,3] [2,3])
+(conj [2,3] [2,3,4])
+(seq [2,3,4])
+(conj [2,3] (seq [2,3,4]))
+(assoc [2,1] [2,3,4])
+(concat [2,3] [2,3,4])
+(defn flatten3 [arr] 
+  (loop [[x & xs] arr output []]
+    (if (nil? x)
+      output
+      (recur xs (if (vector? x) 
+                  (let [v (flatten3 x)]
+                  (concat output v)) 
+                  (conj output x))))))
+      
+(flatten3 [3,4,5])
+(flatten3 [3,4,5,[4]])
+(flatten3 [3,4,5,[4,[[3,4]]]])
+(flatten3 [3,[1,2,3],4,5,[4,[[3,4]]]])

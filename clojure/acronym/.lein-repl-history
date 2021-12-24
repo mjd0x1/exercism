@@ -1,0 +1,109 @@
+(def s "First In, First Out")
+s
+(re-matches #"hello.*" "hello, world")
+(re-matches #"hello.*" s)
+(re-matches #"." s)
+(re-matches #"(.)" s)
+(re-matches #"/w" s)
+(re-seq #"/w" s)
+s
+(re-seq #"\w" s)
+(re-seq #"\W" s)
+(re-seq #"\W\w" s)
+(re-seq #"\W" s)
+(re-seq #"\W." s)
+(re-seq #"\W\w" s)
+(re-seq #"[A-Z]" s)
+(def s "Ruby on Rails")
+(re-seq #"[A-Z]" s)
+(def s "PHP: Hypertext Preprocessor")
+(re-seq #"[A-Z]" s)
+(re-seq #"[A-Z][a-z]" s)
+(re-seq #"[A-Z][a-z | A-Z]" s)
+(def s "Ruby on Rails")
+(re-seq #"[A-Z][a-z | A-Z]" s)
+(re-seq #"[A-Z | a-z][a-z | A-Z]" s)
+(re-seq #"[A-Z][a-z | A-Z]" s)
+(clojure.string/upper-case "Ruby on Rails")
+(def s (clojure.string/upper-case "Ruby on Rails"))
+s
+(re-seq #"[A-Z][a-z | A-Z]" s)
+(re-seq #" /w" s)
+(re-seq #" \w" s)
+"Complementary metal-oxide semiconductor"
+(def s "Complementary metal-oxide semiconductor")
+s
+(re-seq #" \w" s)
+(re-seq #"[ | -]\w" s)
+(def s "PHP: Hypertext Preprocessor")
+(re-seq #"[ | -]\w" s)
+(def s "First In, First Out")
+s
+(re-seq #"[ | -]\w" s)
+(map last (re-seq #"[ | -]\w" s))
+(join (map last (re-seq #"[ | -]\w" s)))
+(str/join (map last (re-seq #"[ | -]\w" s)))
+(def s "asasdsadsadsa")
+s
+(str "A" s)
+(clojure.string/join ["a","a"]
+)
+(ns acronym)
+(:require [clojure.string :as str]))
+(defn acronym [s] 
+  (str/join (map last (re-seq #"[ | -]\w" (str " " s))))
+)
+(ns acronym)
+(:require [clojure.string :as string]))
+(defn acronym [s] 
+  (string/join (map last (re-seq #"[ | -]\w" (str " " s))))
+)
+(ns acronym)
+(:require [clojure.string :as string])
+(defn acronym [s] 
+  (string/join (map last (re-seq #"[ | -]\w" (str " " s))))
+)
+(ns acronym)
+(:require [clojure.string :as string])
+(defn acronym [s] 
+  (string/join (map last (re-seq #"[ | -]\w" (str " " s))))
+)
+(ns acronym)
+(:require [clojure.string :as string])
+(defn acronym [s] 
+  (string/join (map last (re-seq #"[ | -]\w" (str " " s))))
+)
+(ns acronym)
+(:require [clojure.string :as str])
+(defn acronym [s] 
+  (str/join (map last (re-seq #"[ | -]\w" (str " " s))))
+)
+(ns acronym
+(:require [clojure.string :as str]))
+(defn acronym [s] 
+  (str/join (map last (re-seq #"[ | -]\w" (str " " s))))
+)
+(acronym "First In, First Out")
+(acronym "Complementary metal-oxide semiconductor")
+(acronym "PHP: Hypertext Preprocessor")
+(acronym "Ruby on Rails")
+(defn acronym [s] 
+  (-> map last (re-seq #"[ | -]\w" (str " " s))
+   str/join
+   str/uppercase))
+str/upper-case 
+(:require [clojure.string :as str]))
+(defn acronym [s] 
+  (-> map last (re-seq #"[ | -]\w" (str " " s))
+   str/join
+   str/upper-case))
+(acronym "Ruby on Rails")
+(defn acronym [s] 
+  (-> (map last (re-seq #"[ | -]\w" (str " " s)))
+   str/join
+   str/upper-case))
+(acronym "Ruby on Rails")
+(defn acronym [s] 
+  (-> (mapcat last (re-seq #"[ | -]\w" (str " " s)))
+   str/upper-case))
+(acronym "Ruby on Rails")

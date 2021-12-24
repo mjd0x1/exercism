@@ -1,0 +1,111 @@
+(def a [1,2,3,4])
+(pop a)
+(let [x & xs] "sasadsadsa"
+    (println xs)))
+(let [[x & xs] "sasadsadsa"]
+     (println x))
+(def brackets {"]" "[", "}" "{", ")" "("})
+(brackers "]")
+(brackets "]")
+(pop [1,23,3])
+(conj 2 [1,2,3])
+(conj [1,2,3] 2)
+(defn valid? [s]
+  (let [brackets {"]" "[", "}" "{", ")" "("}]
+    (loop [(x & xs) s acc []]
+      (if (nil? x)
+        acc
+        (recur xs (if (= (brackets x) (last acc)) (pop acc) (conj acc x)))))))  
+(defn valid? [s]
+  (let [brackets {"]" "[", "}" "{", ")" "("}]
+    (loop [[x & xs] s acc []]
+      (if (nil? x)
+        acc
+        (recur xs (if (= (brackets x) (last acc)) (pop acc) (conj acc x)))))))  
+(valid? "([{}({}[])])")
+(valid? "[]")
+(defn valid? [s]
+  (let [brackets {"]" "[", "}" "{", ")" "("}]
+    (loop [[x & xs] s acc []]
+      (if (nil? x)
+        acc
+        (do
+          (println acc)
+          (recur xs (if (= (brackets x) (last acc)) (pop acc) (conj acc x))))))))
+(valid? "[]")
+(defn valid? [s]
+  (let [brackets {"]" "[", "}" "{", ")" "("}]
+    (loop [[x & xs] s acc []]
+      (if (nil? x)
+        acc
+        (do
+          (println acc x)
+          (recur xs (if (= (brackets x) (last acc)) (pop acc) (conj acc x))))))))
+(valid? "[]")
+(defn valid? [s]
+  (let [brackets {"]" "[", "}" "{", ")" "("}]
+    (loop [[x & xs] s acc []]
+      (if (nil? x)
+        acc
+        (do
+          (println acc x)
+          (recur xs (if (= (brackets x) (last acc)) (pop acc) (conj acc x))))))))
+(valid? "[]")
+(brackets "[")
+(last [])
+(defn valid? [s]
+  (let [brackets {"]" "[", "}" "{", ")" "("}]
+    (loop [[x & xs] s acc [""]]
+      (if (nil? x)
+        acc
+        (do
+          (println acc x)
+          (recur xs (if (= (brackets x) (last acc)) (pop acc) (conj acc x))))))))
+(valid? "[]")
+(defn valid? [s]
+  (let [brackets {"]" "[", "}" "{", ")" "("}]
+    (loop [[x & xs] s acc [""]]
+      (if (nil? x)
+        acc
+        (do
+          (recur xs (if (= (brackets x) (last acc)) (pop acc) (conj acc x))))))))
+(valid? "[]")
+(valid? "[[[[[]]]]]")
+(map str (valid? "[[[[[]]]]]"))
+(ns matching-brackets)
+(defn valid? [s]
+  (let [brackets {"]" "[", "}" "{", ")" "("}]
+    (loop [[x & xs] s acc [""]]
+      (if (nil? x)
+        acc
+        (do
+          (recur xs (if (= (brackets x) (last acc)) (pop acc) (conj acc (str x)))))))))
+(valid? "[]")
+(brackets "[")
+brackets {"]" "[", "}" "{", ")" "("}
+(brackets "]")
+(def brackets {"]" "[", "}" "{", ")" "("})
+(brackets "]")
+(defn valid? [s]
+  (let [brackets {"]" "[", "}" "{", ")" "("}]
+    (loop [[x & xs] s acc [""]]
+      (if (nil? x)
+        acc
+        (do
+          (recur xs (if (= (brackets (str x)) (last acc)) (pop acc) (conj acc (str x)))))))))
+(valid? "[]")
+(count [""])
+(defn valid? [s]
+  (let [brackets {"]" "[", "}" "{", ")" "("}]
+    (loop [[x & xs] s acc [""]]
+      (if (nil? x)
+        (= (count acc) 1)
+        (do
+          (recur xs (if (= (brackets (str x)) (last acc)) (pop acc) (conj acc (str x)))))))))
+(valid? "([{}({}[])])"
+)
+(valid? "[["
+)
+(def s "[]asdsad21312{")
+(re-seq #"{|}|[|]|(|)" s)
+(re-seq #"\{|\}|\[|\]|\(|\)" s)

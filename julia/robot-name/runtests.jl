@@ -75,6 +75,6 @@ end
             @test isname(name(r))
             @test !in(name(r), history)
             push!(history, name(r))
-        end
+    end
     end
 end
